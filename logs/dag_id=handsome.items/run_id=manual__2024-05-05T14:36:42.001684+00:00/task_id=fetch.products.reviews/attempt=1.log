@@ -1,0 +1,42 @@
+[2024-05-05T14:37:08.629+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-05T14:37:08.702+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: handsome.items.fetch.products.reviews manual__2024-05-05T14:36:42.001684+00:00 [queued]>
+[2024-05-05T14:37:08.757+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: handsome.items.fetch.products.reviews manual__2024-05-05T14:36:42.001684+00:00 [queued]>
+[2024-05-05T14:37:08.758+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 3
+[2024-05-05T14:37:08.858+0000] {taskinstance.py:2327} INFO - Executing <Task(FetchReviewOperator): fetch.products.reviews> on 2024-05-05 14:36:42.001684+00:00
+[2024-05-05T14:37:08.875+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2963) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-05T14:37:08.892+0000] {standard_task_runner.py:63} INFO - Started process 2974 to run task
+[2024-05-05T14:37:08.899+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'handsome.items', 'fetch.products.reviews', 'manual__2024-05-05T14:36:42.001684+00:00', '--job-id', '144', '--raw', '--subdir', 'DAGS_FOLDER/handsome/DAGs.py', '--cfg-path', '/tmp/tmp_e8_ck3x']
+[2024-05-05T14:37:09.425+0000] {standard_task_runner.py:91} INFO - Job 144: Subtask fetch.products.reviews
+[2024-05-05T14:37:09.539+0000] {task_command.py:426} INFO - Running <TaskInstance: handsome.items.fetch.products.reviews manual__2024-05-05T14:36:42.001684+00:00 [running]> on host 8f2b7c684425
+[2024-05-05T14:37:09.785+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='400CC' AIRFLOW_CTX_DAG_ID='handsome.items' AIRFLOW_CTX_TASK_ID='fetch.products.reviews' AIRFLOW_CTX_EXECUTION_DATE='2024-05-05T14:36:42.001684+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-05T14:36:42.001684+00:00'
+[2024-05-05T14:37:09.788+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-05T14:37:09.844+0000] {products.py:227} INFO - outputs : {'CM2E3WJC158WP1': 15, 'SY2E3WJMTE1WM2': 73, 'CM2E4WOT135W': 26, 'TM2E5KCDC81W': 32, 'CM2E5KOT546W': 1, 'LC2E0QOT501W': 11, 'TM2E1TTO421W': 53, 'TG2D9TTO085MHN': 8, 'MN2E1WTO321W': 364, 'CM2E3WSH255W': 42, 'CM2E4KTO638W': 87, 'SY2E3NOP721W': 12, 'SJ2E5WOP851W': 2, 'TM2E5NOPC81W': 33, 'SY2E1WSC808W': 3, 'TM2E3WSC644W': 43, 'SY2E5WSC827W': 22, 'MN2E1WSC926W': 58, 'CM2E3WPC324WP1': 27, 'CM2E4WPC336W': 106, 'TM2E3NPC943W': 43, 'OB2E4NPC626W': 1, 'O22E5TTOM06N': 1, 'O22E4WSC075W': 0, 'O22E3WOP551W': 0, 'O22E1NPC973W': 0, 'O22E0AJWV01W': 5, 'IL2E4TTO340N': 16, 'IL2E3KTOV33W': 3, 'SY2E1ACKT01W': 247, 'LC2E3WVTF42W': 18, 'SJ2E4KOTQ49W': 8, 'SJ2E1WOTQ04W': 52, 'MN2E4WPC162W': 17, 'OB2E4KTO731W': 6, 'OB2E1KTO705W': 23, 'OB2E0KTO701W': 16, 'TH2E3NSH723N': 0, 'SH2E3WJMTE1M': 15, 'TH2E1WCT400MP1': 0, 'TH2E1KCD015M': 13, 'TH2DBWCT420N': 16, 'TH2DBQOT343N': 7, 'OL2D1LJC001M': 0, 'SH2E3TRNTE3M': 84, 'TG2E3TTS205MZ9': 0, 'TH2E5WSH731N': 0, 'TH2E3KTN018M': 21, 'SH2E4WPC544M': 0, 'TH2E3WPC523M': 0, 'TG2E3WPC038MAF': 0, 'TH2E3NPC684M': 1, 'TH2E5WPC593N': 0, 'TH2E4WJC056M': 0, 'TH2E3WPC653M': 2, 'TH2E1NPC683N': 18, 'TH2D8KRN037N': 3, 'TH2D5TRN651N': 14}
+[2024-05-05T14:37:10.140+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-05T14:37:10.142+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/handsome/ops/products.py", line 229, in execute
+    result = self._gather(outputs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/handsome/ops/products.py", line 247, in _gather
+    tasks += self._processing(self._fetch(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/handsome/ops/products.py", line 254, in _processing
+    for review in reviews['payload']['goodsRevList']:
+                  ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'goodsRevList'
+[2024-05-05T14:37:10.162+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=handsome.items, task_id=fetch.products.reviews, execution_date=20240505T143642, start_date=20240505T143708, end_date=20240505T143710
+[2024-05-05T14:37:10.196+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 144 for task fetch.products.reviews ('goodsRevList'; 2974)
+[2024-05-05T14:37:10.241+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-05-05T14:37:10.566+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-05T14:37:10.570+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
