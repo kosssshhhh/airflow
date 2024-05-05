@@ -5391,3 +5391,17 @@ ModuleNotFoundError: No module named 'handsome.ops'; 'handsome' is not a package
 [2024-05-05T14:52:31.278+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:52:31.278+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2024-05-05T14:52:31.314+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:52:31.314+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-05-05 19:30:00+00:00, run_after=2024-05-06 19:30:00+00:00
 [2024-05-05T14:52:31.352+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/musinsa/DAGs.py took 2.341 seconds
+[2024-05-05T14:53:01.492+0000] {processor.py:161} INFO - Started process (PID=5419) to work on /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-05T14:53:01.494+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/musinsa/DAGs.py for tasks to queue
+[2024-05-05T14:53:01.496+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:01.495+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-05T14:53:03.448+0000] {processor.py:840} INFO - DAG(s) 'musinsa.items' retrieved from /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-05T14:53:03.528+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:03.526+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T14:53:03.615+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:03.614+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-05-05 19:30:00+00:00, run_after=2024-05-06 19:30:00+00:00
+[2024-05-05T14:53:03.685+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/musinsa/DAGs.py took 2.216 seconds
+[2024-05-05T14:53:33.968+0000] {processor.py:161} INFO - Started process (PID=5430) to work on /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-05T14:53:33.970+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/musinsa/DAGs.py for tasks to queue
+[2024-05-05T14:53:33.973+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:33.972+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-05T14:53:36.178+0000] {processor.py:840} INFO - DAG(s) 'musinsa.items' retrieved from /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-05T14:53:36.230+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:36.229+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T14:53:36.314+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:36.314+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-05-05 19:30:00+00:00, run_after=2024-05-06 19:30:00+00:00
+[2024-05-05T14:53:36.487+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/musinsa/DAGs.py took 2.554 seconds

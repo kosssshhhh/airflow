@@ -6562,3 +6562,17 @@ AttributeError: 'list' object has no attribute 'update_relative'
 [2024-05-05T14:52:20.061+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:52:20.059+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2024-05-05T14:52:20.147+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:52:20.146+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-05-05 19:30:00+00:00, run_after=2024-05-06 19:30:00+00:00
 [2024-05-05T14:52:20.257+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/handsome/DAGs.py took 1.524 seconds
+[2024-05-05T14:52:50.561+0000] {processor.py:161} INFO - Started process (PID=5417) to work on /opt/airflow/dags/handsome/DAGs.py
+[2024-05-05T14:52:50.566+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/handsome/DAGs.py for tasks to queue
+[2024-05-05T14:52:50.570+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:52:50.568+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/handsome/DAGs.py
+[2024-05-05T14:52:52.018+0000] {processor.py:840} INFO - DAG(s) 'handsome.items' retrieved from /opt/airflow/dags/handsome/DAGs.py
+[2024-05-05T14:52:52.121+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:52:52.119+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T14:52:52.297+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:52:52.297+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-05-05 19:30:00+00:00, run_after=2024-05-06 19:30:00+00:00
+[2024-05-05T14:52:52.352+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/handsome/DAGs.py took 1.815 seconds
+[2024-05-05T14:53:22.656+0000] {processor.py:161} INFO - Started process (PID=5428) to work on /opt/airflow/dags/handsome/DAGs.py
+[2024-05-05T14:53:22.661+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/handsome/DAGs.py for tasks to queue
+[2024-05-05T14:53:22.664+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:22.663+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/handsome/DAGs.py
+[2024-05-05T14:53:23.588+0000] {processor.py:840} INFO - DAG(s) 'handsome.items' retrieved from /opt/airflow/dags/handsome/DAGs.py
+[2024-05-05T14:53:23.663+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:23.662+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T14:53:23.720+0000] {logging_mixin.py:188} INFO - [2024-05-05T14:53:23.719+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-05-05 19:30:00+00:00, run_after=2024-05-06 19:30:00+00:00
+[2024-05-05T14:53:23.784+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/handsome/DAGs.py took 1.157 seconds

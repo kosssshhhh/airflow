@@ -10856,3 +10856,22 @@ File Path                           PID    Runtime      # DAGs    # Errors  Last
 /opt/airflow/dags/musinsa/DAGs.py                            1           0  2.30s           2024-05-05T14:51:58
 /opt/airflow/dags/handsome/DAGs.py                           1           0  1.57s           2024-05-05T14:52:20
 ================================================================================
+[2024-05-05T14:52:54.188+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/musinsa/DAGs.py                            1           0  2.38s           2024-05-05T14:52:31
+/opt/airflow/dags/handsome/DAGs.py                           1           0  1.86s           2024-05-05T14:52:52
+================================================================================
+[2024-05-05T14:53:24.630+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/musinsa/DAGs.py                            1           0  2.26s           2024-05-05T14:53:03
+/opt/airflow/dags/handsome/DAGs.py                           1           0  1.20s           2024-05-05T14:53:23
+================================================================================
+[2024-05-05T14:53:37.334+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
