@@ -1,0 +1,336 @@
+[2024-05-05T04:05:52.222+0000] {processor.py:161} INFO - Started process (PID=37) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:05:52.233+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:05:52.302+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:05:52.297+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:05:52.345+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:05:52.330+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:05:52.346+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:05:52.439+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.306 seconds
+[2024-05-05T04:06:22.646+0000] {processor.py:161} INFO - Started process (PID=45) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:06:22.653+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:06:22.667+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:06:22.666+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:06:22.708+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:06:22.704+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:06:22.711+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:06:22.811+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.199 seconds
+[2024-05-05T04:06:52.998+0000] {processor.py:161} INFO - Started process (PID=53) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:06:52.999+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:06:53.000+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:06:53.000+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:06:53.004+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:06:53.003+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:06:53.005+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:06:53.032+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.045 seconds
+[2024-05-05T04:07:23.192+0000] {processor.py:161} INFO - Started process (PID=61) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:07:23.193+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:07:23.194+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:07:23.194+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:07:23.198+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:07:23.197+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:07:23.199+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:07:23.219+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.035 seconds
+[2024-05-05T04:07:53.382+0000] {processor.py:161} INFO - Started process (PID=69) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:07:53.383+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:07:53.384+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:07:53.384+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:07:53.389+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:07:53.388+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:07:53.390+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:07:53.416+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.043 seconds
+[2024-05-05T04:08:23.575+0000] {processor.py:161} INFO - Started process (PID=77) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:08:23.580+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:08:23.582+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:08:23.581+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:08:23.599+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:08:23.594+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:08:23.600+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:08:23.646+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.079 seconds
+[2024-05-05T04:08:53.809+0000] {processor.py:161} INFO - Started process (PID=85) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:08:53.811+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:08:53.812+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:08:53.811+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:08:53.817+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:08:53.815+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:08:53.818+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:08:53.841+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.038 seconds
+[2024-05-05T04:12:45.565+0000] {processor.py:161} INFO - Started process (PID=32) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:12:45.567+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:12:45.574+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:12:45.573+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:12:45.583+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:12:45.580+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:12:45.584+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:12:45.629+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.081 seconds
+[2024-05-05T04:13:15.796+0000] {processor.py:161} INFO - Started process (PID=41) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:13:15.797+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:13:15.800+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:13:15.799+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:13:15.803+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:13:15.802+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:13:15.804+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:13:15.824+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.034 seconds
+[2024-05-05T04:13:46.010+0000] {processor.py:161} INFO - Started process (PID=49) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:13:46.011+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:13:46.018+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:13:46.017+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:13:46.024+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:13:46.023+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:13:46.025+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:13:46.061+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.069 seconds
+[2024-05-05T04:14:16.236+0000] {processor.py:161} INFO - Started process (PID=57) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:14:16.237+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:14:16.239+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:14:16.238+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:14:16.242+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:14:16.241+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common.musinsa'
+[2024-05-05T04:14:16.243+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:14:16.262+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.034 seconds
+[2024-05-05T04:14:27.333+0000] {processor.py:161} INFO - Started process (PID=65) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:14:27.334+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:14:27.336+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:14:27.336+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:14:27.340+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:14:27.339+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:14:27.340+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:14:27.360+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.036 seconds
+[2024-05-05T04:15:56.001+0000] {processor.py:161} INFO - Started process (PID=32) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:15:56.004+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:15:56.008+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:15:56.008+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:15:56.015+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:15:56.013+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:15:56.016+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:15:56.049+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.058 seconds
+[2024-05-05T04:16:26.223+0000] {processor.py:161} INFO - Started process (PID=40) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:16:26.224+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:16:26.227+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:16:26.227+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:16:26.231+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:16:26.230+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:16:26.232+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:16:26.257+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.041 seconds
+[2024-05-05T04:16:56.365+0000] {processor.py:161} INFO - Started process (PID=48) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:16:56.366+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:16:56.368+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:16:56.367+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:16:56.372+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:16:56.370+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:16:56.372+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:16:56.395+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.036 seconds
+[2024-05-05T04:17:26.507+0000] {processor.py:161} INFO - Started process (PID=56) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:17:26.509+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:17:26.511+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:17:26.511+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:17:26.516+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:17:26.515+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:17:26.517+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:17:26.544+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.045 seconds
+[2024-05-05T04:17:56.700+0000] {processor.py:161} INFO - Started process (PID=64) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:17:56.700+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:17:56.703+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:17:56.702+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:17:56.707+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:17:56.706+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:17:56.708+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:17:56.731+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.038 seconds
+[2024-05-05T04:18:26.889+0000] {processor.py:161} INFO - Started process (PID=72) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:18:26.890+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:18:26.892+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:18:26.891+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:18:26.895+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:18:26.894+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:18:26.896+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:18:26.919+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.038 seconds
+[2024-05-05T04:18:57.046+0000] {processor.py:161} INFO - Started process (PID=80) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:18:57.047+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:18:57.051+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:18:57.050+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:18:57.056+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:18:57.054+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:18:57.057+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:18:57.084+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.047 seconds
+[2024-05-05T04:19:27.206+0000] {processor.py:161} INFO - Started process (PID=88) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:19:27.208+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:19:27.210+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:19:27.210+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:19:27.216+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:19:27.214+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:19:27.216+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:19:27.244+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.047 seconds
+[2024-05-05T04:19:57.409+0000] {processor.py:161} INFO - Started process (PID=96) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:19:57.411+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:19:57.415+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:19:57.415+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:19:57.422+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:19:57.420+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/example.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/example.py", line 4, in <module>
+    from musinsa.ops.musinsa import *
+ModuleNotFoundError: No module named 'musinsa'
+[2024-05-05T04:19:57.422+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:19:57.459+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.064 seconds
+[2024-05-05T04:20:27.612+0000] {processor.py:161} INFO - Started process (PID=104) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:20:27.613+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:20:27.614+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:20:27.614+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:20:27.638+0000] {processor.py:840} INFO - DAG(s) 'mysql_save' retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:20:27.920+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:20:27.919+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T04:20:27.949+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:20:27.948+0000] {dag.py:3954} INFO - Setting next_dagrun for mysql_save to 2024-05-04 00:00:00+00:00, run_after=2024-05-05 00:00:00+00:00
+[2024-05-05T04:20:27.981+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.376 seconds
+[2024-05-05T04:20:58.099+0000] {processor.py:161} INFO - Started process (PID=114) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:20:58.100+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:20:58.103+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:20:58.103+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:20:58.121+0000] {processor.py:840} INFO - DAG(s) 'mysql_save' retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:20:58.158+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:20:58.158+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T04:20:58.192+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:20:58.191+0000] {dag.py:3954} INFO - Setting next_dagrun for mysql_save to 2024-05-05 00:00:00+00:00, run_after=2024-05-06 00:00:00+00:00
+[2024-05-05T04:20:58.218+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.127 seconds
+[2024-05-05T04:21:28.548+0000] {processor.py:161} INFO - Started process (PID=123) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:21:28.557+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:21:28.562+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:21:28.561+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:21:28.620+0000] {processor.py:840} INFO - DAG(s) 'mysql_save' retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:21:28.748+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:21:28.748+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T04:21:28.845+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:21:28.844+0000] {dag.py:3954} INFO - Setting next_dagrun for mysql_save to 2024-05-05 00:00:00+00:00, run_after=2024-05-06 00:00:00+00:00
+[2024-05-05T04:21:28.916+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.394 seconds
+[2024-05-05T04:21:59.118+0000] {processor.py:161} INFO - Started process (PID=132) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:21:59.120+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:21:59.124+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:21:59.123+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:21:59.169+0000] {processor.py:840} INFO - DAG(s) 'mysql_save' retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:21:59.218+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:21:59.217+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T04:21:59.281+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:21:59.281+0000] {dag.py:3954} INFO - Setting next_dagrun for mysql_save to 2024-05-05 00:00:00+00:00, run_after=2024-05-06 00:00:00+00:00
+[2024-05-05T04:21:59.308+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.219 seconds
+[2024-05-05T04:22:29.458+0000] {processor.py:161} INFO - Started process (PID=141) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:22:29.462+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:22:29.465+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:22:29.464+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:22:29.483+0000] {processor.py:840} INFO - DAG(s) 'mysql_save' retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:22:29.518+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:22:29.517+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T04:22:29.561+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:22:29.560+0000] {dag.py:3954} INFO - Setting next_dagrun for mysql_save to 2024-05-05 00:00:00+00:00, run_after=2024-05-06 00:00:00+00:00
+[2024-05-05T04:22:29.600+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.150 seconds
+[2024-05-05T04:22:59.788+0000] {processor.py:161} INFO - Started process (PID=150) to work on /opt/airflow/dags/example.py
+[2024-05-05T04:22:59.789+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/example.py for tasks to queue
+[2024-05-05T04:22:59.792+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:22:59.792+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/example.py
+[2024-05-05T04:22:59.812+0000] {processor.py:840} INFO - DAG(s) 'mysql_save' retrieved from /opt/airflow/dags/example.py
+[2024-05-05T04:22:59.851+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:22:59.851+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-05T04:22:59.896+0000] {logging_mixin.py:188} INFO - [2024-05-05T04:22:59.895+0000] {dag.py:3954} INFO - Setting next_dagrun for mysql_save to 2024-05-05 00:00:00+00:00, run_after=2024-05-06 00:00:00+00:00
+[2024-05-05T04:22:59.924+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/example.py took 0.145 seconds

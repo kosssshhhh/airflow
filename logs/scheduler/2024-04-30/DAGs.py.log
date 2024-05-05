@@ -1,0 +1,923 @@
+[2024-04-30T08:14:10.287+0000] {processor.py:161} INFO - Started process (PID=31) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:14:10.289+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:14:10.293+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:14:10.292+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:14:10.311+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:14:10.300+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:14:10.312+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:14:10.394+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.120 seconds
+[2024-04-30T08:14:40.631+0000] {processor.py:161} INFO - Started process (PID=91) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:14:40.633+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:14:40.636+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:14:40.636+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:14:40.653+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:14:40.651+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:14:40.655+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:14:40.702+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.080 seconds
+[2024-04-30T08:15:10.782+0000] {processor.py:161} INFO - Started process (PID=152) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:15:10.784+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:15:10.785+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:15:10.785+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:15:10.791+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:15:10.789+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:15:10.792+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:15:10.825+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.057 seconds
+[2024-04-30T08:15:41.160+0000] {processor.py:161} INFO - Started process (PID=218) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:15:41.162+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:15:41.167+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:15:41.164+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:15:41.177+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:15:41.175+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:15:41.178+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:15:41.212+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.068 seconds
+[2024-04-30T08:16:11.348+0000] {processor.py:161} INFO - Started process (PID=278) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:16:11.350+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:16:11.353+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:16:11.351+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:16:11.362+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:16:11.359+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:16:11.363+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:16:11.399+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.069 seconds
+[2024-04-30T08:16:41.677+0000] {processor.py:161} INFO - Started process (PID=338) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:16:41.678+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:16:41.680+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:16:41.679+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:16:41.684+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:16:41.683+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:16:41.685+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:16:41.708+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.040 seconds
+[2024-04-30T08:19:41.448+0000] {processor.py:161} INFO - Started process (PID=37) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:19:41.462+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:19:41.466+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:19:41.466+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:19:41.486+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:19:41.481+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:19:41.487+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:19:41.592+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.162 seconds
+[2024-04-30T08:20:11.865+0000] {processor.py:161} INFO - Started process (PID=45) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:20:11.871+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:20:11.874+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:20:11.873+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:20:11.878+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:20:11.877+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:20:11.879+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:20:11.910+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.064 seconds
+[2024-04-30T08:20:42.055+0000] {processor.py:161} INFO - Started process (PID=53) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:20:42.056+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:20:42.059+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:20:42.059+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:20:42.064+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:20:42.062+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:20:42.064+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:20:42.087+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.042 seconds
+[2024-04-30T08:21:12.273+0000] {processor.py:161} INFO - Started process (PID=61) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:21:12.275+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:21:12.278+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:21:12.278+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:21:12.283+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:21:12.281+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:21:12.284+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:21:12.309+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.045 seconds
+[2024-04-30T08:21:42.456+0000] {processor.py:161} INFO - Started process (PID=69) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:21:42.457+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:21:42.459+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:21:42.459+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:21:42.464+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:21:42.462+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:21:42.465+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:21:42.491+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.048 seconds
+[2024-04-30T08:22:12.667+0000] {processor.py:161} INFO - Started process (PID=77) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:22:12.669+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:22:12.672+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:22:12.672+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:22:12.677+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:22:12.675+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:22:12.678+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:22:12.705+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.048 seconds
+[2024-04-30T08:22:42.906+0000] {processor.py:161} INFO - Started process (PID=85) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:22:42.908+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:22:42.911+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:22:42.910+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:22:42.925+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:22:42.923+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:22:42.926+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:22:42.973+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.084 seconds
+[2024-04-30T08:23:13.097+0000] {processor.py:161} INFO - Started process (PID=93) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:23:13.099+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:23:13.101+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:23:13.101+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:23:13.106+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:23:13.104+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:23:13.106+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:23:13.128+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.045 seconds
+[2024-04-30T08:23:43.285+0000] {processor.py:161} INFO - Started process (PID=101) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:23:43.286+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:23:43.288+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:23:43.288+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:23:43.292+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:23:43.291+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+ModuleNotFoundError: No module named 'common'
+[2024-04-30T08:23:43.292+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:23:43.319+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.043 seconds
+[2024-04-30T08:38:45.210+0000] {processor.py:161} INFO - Started process (PID=43) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:38:45.230+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:38:45.262+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:38:45.235+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:38:45.296+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:38:45.285+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 85
+    goodsNo = item_info['goodsNo']
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 83
+[2024-04-30T08:38:45.298+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:38:45.392+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.213 seconds
+[2024-04-30T08:39:15.696+0000] {processor.py:161} INFO - Started process (PID=57) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:39:15.710+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:39:15.733+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:39:15.732+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:39:15.770+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:39:15.766+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 85
+    goodsNo = item_info['goodsNo']
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 83
+[2024-04-30T08:39:15.772+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:39:15.831+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.156 seconds
+[2024-04-30T08:39:46.168+0000] {processor.py:161} INFO - Started process (PID=66) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:39:46.184+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:39:46.196+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:39:46.196+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:39:46.228+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:39:46.220+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 85
+    goodsNo = item_info['goodsNo']
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 83
+[2024-04-30T08:39:46.230+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:39:46.619+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.474 seconds
+[2024-04-30T08:40:16.989+0000] {processor.py:161} INFO - Started process (PID=73) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:40:16.991+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:40:16.995+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:40:16.994+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:40:17.020+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:40:17.012+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 85
+    goodsNo = item_info['goodsNo']
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 83
+[2024-04-30T08:40:17.025+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:40:17.150+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.193 seconds
+[2024-04-30T08:40:47.488+0000] {processor.py:161} INFO - Started process (PID=81) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:40:47.490+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:40:47.504+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:40:47.504+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:40:47.539+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:40:47.532+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 85
+    goodsNo = item_info['goodsNo']
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 83
+[2024-04-30T08:40:47.541+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:40:47.651+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.209 seconds
+[2024-04-30T08:47:45.499+0000] {processor.py:161} INFO - Started process (PID=54) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:47:45.532+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:47:45.819+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:47:45.794+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:47:45.995+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:47:45.967+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T08:47:46.003+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:47:46.466+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 1.507 seconds
+[2024-04-30T08:48:17.294+0000] {processor.py:161} INFO - Started process (PID=62) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:48:17.317+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:48:17.349+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:48:17.348+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:48:17.466+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:48:17.455+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T08:48:17.470+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:48:17.736+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.584 seconds
+[2024-04-30T08:54:38.791+0000] {processor.py:161} INFO - Started process (PID=50) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:54:38.805+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:54:38.863+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:54:38.844+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:54:38.945+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:54:38.938+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T08:54:38.947+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:54:39.190+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.505 seconds
+[2024-04-30T08:55:10.558+0000] {processor.py:161} INFO - Started process (PID=58) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:55:10.628+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:55:11.059+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:55:11.047+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:55:11.450+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:55:11.410+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T08:55:11.456+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:55:11.788+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 1.733 seconds
+[2024-04-30T08:55:43.801+0000] {processor.py:161} INFO - Started process (PID=66) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:55:43.812+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:55:43.914+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:55:43.906+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:55:44.058+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:55:44.037+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T08:55:44.066+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:55:44.399+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.821 seconds
+[2024-04-30T08:56:15.182+0000] {processor.py:161} INFO - Started process (PID=75) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:56:15.212+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:56:15.279+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:56:15.275+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:56:15.498+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:56:15.467+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T08:56:15.506+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:56:15.668+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.840 seconds
+[2024-04-30T08:56:46.514+0000] {processor.py:161} INFO - Started process (PID=83) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T08:56:46.516+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T08:56:46.546+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:56:46.546+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:56:46.652+0000] {logging_mixin.py:188} INFO - [2024-04-30T08:56:46.630+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T08:56:46.660+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T08:56:47.395+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.975 seconds
+[2024-04-30T09:00:40.367+0000] {processor.py:161} INFO - Started process (PID=38) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:00:40.375+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:00:40.396+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:00:40.393+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:00:40.464+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:00:40.451+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:00:40.468+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:00:40.625+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.313 seconds
+[2024-04-30T09:01:10.966+0000] {processor.py:161} INFO - Started process (PID=46) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:01:10.970+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:01:10.990+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:01:10.988+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:01:11.040+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:01:11.035+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:01:11.043+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:01:11.125+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.208 seconds
+[2024-04-30T09:01:41.397+0000] {processor.py:161} INFO - Started process (PID=54) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:01:41.399+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:01:41.404+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:01:41.403+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:01:41.414+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:01:41.412+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:01:41.415+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:01:41.443+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.062 seconds
+[2024-04-30T09:02:11.722+0000] {processor.py:161} INFO - Started process (PID=62) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:02:11.724+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:02:11.730+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:02:11.729+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:02:11.742+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:02:11.740+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:02:11.744+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:02:11.791+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.084 seconds
+[2024-04-30T09:02:42.047+0000] {processor.py:161} INFO - Started process (PID=70) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:02:42.049+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:02:42.052+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:02:42.052+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:02:42.063+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:02:42.060+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:02:42.064+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:02:42.109+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.080 seconds
+[2024-04-30T09:05:26.804+0000] {processor.py:161} INFO - Started process (PID=39) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:05:26.807+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:05:26.831+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:05:26.830+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:05:26.866+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:05:26.861+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:05:26.879+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:05:26.961+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.184 seconds
+[2024-04-30T09:05:57.159+0000] {processor.py:161} INFO - Started process (PID=47) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:05:57.160+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:05:57.163+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:05:57.163+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:05:57.172+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:05:57.170+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:05:57.172+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:05:57.202+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.052 seconds
+[2024-04-30T09:06:27.455+0000] {processor.py:161} INFO - Started process (PID=55) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:06:27.457+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:06:27.462+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:06:27.461+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:06:27.492+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:06:27.486+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:06:27.498+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:06:27.558+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.116 seconds
+[2024-04-30T09:06:57.869+0000] {processor.py:161} INFO - Started process (PID=63) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:06:57.871+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:06:57.876+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:06:57.875+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:06:57.892+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:06:57.890+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:06:57.894+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:06:57.951+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.098 seconds
+[2024-04-30T09:07:28.243+0000] {processor.py:161} INFO - Started process (PID=71) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:07:28.245+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:07:28.248+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:07:28.247+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:07:28.262+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:07:28.260+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:07:28.263+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:07:28.305+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.077 seconds
+[2024-04-30T09:07:58.590+0000] {processor.py:161} INFO - Started process (PID=80) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:07:58.592+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:07:58.596+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:07:58.595+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:07:58.612+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:07:58.609+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:07:58.614+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:07:58.666+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.094 seconds
+[2024-04-30T09:08:28.926+0000] {processor.py:161} INFO - Started process (PID=88) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:08:28.928+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:08:28.931+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:08:28.931+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:08:28.942+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:08:28.940+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:08:28.943+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:08:28.973+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.056 seconds
+[2024-04-30T09:08:59.269+0000] {processor.py:161} INFO - Started process (PID=96) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:08:59.271+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:08:59.276+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:08:59.275+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:08:59.290+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:08:59.287+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:08:59.291+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:08:59.326+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.072 seconds
+[2024-04-30T09:09:29.582+0000] {processor.py:161} INFO - Started process (PID=104) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:09:29.585+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:09:29.595+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:09:29.593+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:09:29.625+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:09:29.620+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:09:29.627+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:09:29.687+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.133 seconds
+[2024-04-30T09:09:59.967+0000] {processor.py:161} INFO - Started process (PID=112) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:09:59.969+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:09:59.977+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:09:59.975+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:09:59.996+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:09:59.993+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:09:59.999+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:10:00.080+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.132 seconds
+[2024-04-30T09:10:30.498+0000] {processor.py:161} INFO - Started process (PID=120) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:10:30.500+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:10:30.504+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:10:30.504+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:10:30.522+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:10:30.520+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:10:30.524+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:10:30.589+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.123 seconds
+[2024-04-30T09:11:00.883+0000] {processor.py:161} INFO - Started process (PID=128) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:11:00.884+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:11:00.888+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:11:00.887+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:11:00.905+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:11:00.902+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:11:00.907+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:11:00.968+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.112 seconds
+[2024-04-30T09:11:31.116+0000] {processor.py:161} INFO - Started process (PID=136) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:11:31.118+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:11:31.121+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:11:31.121+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:11:31.133+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:11:31.131+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:11:31.134+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:11:31.168+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.064 seconds
+[2024-04-30T09:12:01.417+0000] {processor.py:161} INFO - Started process (PID=144) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:12:01.418+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:12:01.422+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:12:01.422+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:12:01.442+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:12:01.438+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 6, in <module>
+    from common.musinsa import *
+  File "/opt/airflow/plugins/common/musinsa.py", line 185
+    import pandas as pd
+IndentationError: unexpected indent
+[2024-04-30T09:12:01.444+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:12:01.495+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.094 seconds
+[2024-04-30T09:12:31.848+0000] {processor.py:161} INFO - Started process (PID=152) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:12:31.851+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:12:31.869+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:12:31.867+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:12:31.894+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:12:31.891+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:12:31.896+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:12:32.028+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.213 seconds
+[2024-04-30T09:18:05.579+0000] {processor.py:161} INFO - Started process (PID=37) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:18:05.581+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:18:05.585+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:18:05.584+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:18:05.594+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:18:05.591+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:18:05.595+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:18:05.629+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.063 seconds
+[2024-04-30T09:18:35.886+0000] {processor.py:161} INFO - Started process (PID=45) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:18:35.889+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:18:35.898+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:18:35.897+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:18:35.917+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:18:35.912+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:18:35.920+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:18:36.008+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.142 seconds
+[2024-04-30T09:19:06.308+0000] {processor.py:161} INFO - Started process (PID=53) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:19:06.310+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:19:06.314+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:19:06.314+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:19:06.323+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:19:06.321+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:19:06.325+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:19:06.358+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.062 seconds
+[2024-04-30T09:19:36.686+0000] {processor.py:161} INFO - Started process (PID=61) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:19:36.687+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:19:36.692+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:19:36.691+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:19:36.703+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:19:36.700+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:19:36.704+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:19:36.759+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.088 seconds
+[2024-04-30T09:20:07.066+0000] {processor.py:161} INFO - Started process (PID=69) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:20:07.070+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:20:07.078+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:20:07.077+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:20:07.095+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:20:07.091+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:20:07.096+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:20:07.145+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.102 seconds
+[2024-04-30T09:20:37.452+0000] {processor.py:161} INFO - Started process (PID=77) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:20:37.454+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:20:37.459+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:20:37.458+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:20:37.469+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:20:37.464+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:20:37.470+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:20:37.520+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.084 seconds
+[2024-04-30T09:21:07.777+0000] {processor.py:161} INFO - Started process (PID=85) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:21:07.778+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:21:07.782+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:21:07.781+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:21:07.792+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:21:07.789+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:21:07.793+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:21:07.840+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.076 seconds
+[2024-04-30T09:21:38.724+0000] {processor.py:161} INFO - Started process (PID=97) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:21:38.731+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:21:38.745+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:21:38.743+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:21:38.780+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:21:38.776+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 7, in <module>
+    from common.handsome import *
+ModuleNotFoundError: No module named 'common.handsome'
+[2024-04-30T09:21:38.782+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:21:38.852+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.170 seconds
+[2024-04-30T09:22:09.154+0000] {processor.py:161} INFO - Started process (PID=106) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:09.160+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:22:09.174+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:09.172+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:09.228+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:09.215+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/DAGs.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAGs.py", line 8, in <module>
+    from common.wconcept import *
+ModuleNotFoundError: No module named 'common.wconcept'
+[2024-04-30T09:22:09.231+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:09.302+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.181 seconds
+[2024-04-30T09:22:21.448+0000] {processor.py:161} INFO - Started process (PID=113) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:21.450+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:22:21.455+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:21.454+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:21.518+0000] {processor.py:840} INFO - DAG(s) 'musinsa.items', 'handsome.items', 'wconcept.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:21.852+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:21.852+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:22:21.903+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:21.903+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:22:21.915+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:21.914+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:22:21.924+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:21.924+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:22:21.990+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.582 seconds
+[2024-04-30T09:22:52.233+0000] {processor.py:161} INFO - Started process (PID=121) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:52.236+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:22:52.239+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:52.239+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:52.269+0000] {processor.py:840} INFO - DAG(s) 'wconcept.items', 'handsome.items', 'musinsa.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:22:52.345+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:52.344+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:22:52.460+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:52.459+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:22:52.474+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:52.474+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:22:52.483+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:22:52.482+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:22:52.526+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.305 seconds
+[2024-04-30T09:23:22.852+0000] {processor.py:161} INFO - Started process (PID=129) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:23:22.855+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:23:22.863+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:22.862+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:23:22.917+0000] {processor.py:840} INFO - DAG(s) 'handsome.items', 'wconcept.items', 'musinsa.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:23:23.033+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:23.032+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:23:23.099+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:23.098+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:23:23.117+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:23.117+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:23:23.128+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:23.128+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:23:23.193+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.357 seconds
+[2024-04-30T09:23:53.348+0000] {processor.py:161} INFO - Started process (PID=138) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:23:53.351+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:23:53.359+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:53.358+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:23:53.408+0000] {processor.py:840} INFO - DAG(s) 'handsome.items', 'wconcept.items', 'musinsa.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:23:53.521+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:53.520+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:23:53.590+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:53.590+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:23:53.600+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:53.599+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:23:53.605+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:23:53.605+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:23:53.635+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.311 seconds
+[2024-04-30T09:24:23.913+0000] {processor.py:161} INFO - Started process (PID=146) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:24:23.916+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:24:23.921+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:23.920+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:24:23.979+0000] {processor.py:840} INFO - DAG(s) 'handsome.items', 'musinsa.items', 'wconcept.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:24:24.123+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:24.122+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:24:24.244+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:24.243+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:24:24.269+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:24.268+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:24:24.282+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:24.281+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:24:24.358+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.459 seconds
+[2024-04-30T09:24:54.444+0000] {processor.py:161} INFO - Started process (PID=154) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:24:54.447+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:24:54.456+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:54.454+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:24:54.539+0000] {processor.py:840} INFO - DAG(s) 'wconcept.items', 'handsome.items', 'musinsa.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:24:54.678+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:54.678+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:24:54.749+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:54.748+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:24:54.762+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:54.761+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:24:54.768+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:24:54.767+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:24:54.815+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.394 seconds
+[2024-04-30T09:25:25.057+0000] {processor.py:161} INFO - Started process (PID=162) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:25:25.064+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:25:25.073+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:25.071+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:25:25.177+0000] {processor.py:840} INFO - DAG(s) 'wconcept.items', 'handsome.items', 'musinsa.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:25:25.355+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:25.353+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:25:25.449+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:25.449+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:25:25.476+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:25.476+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:25:25.487+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:25.486+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:25:25.546+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.526 seconds
+[2024-04-30T09:25:55.649+0000] {processor.py:161} INFO - Started process (PID=170) to work on /opt/airflow/dags/DAGs.py
+[2024-04-30T09:25:55.651+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/DAGs.py for tasks to queue
+[2024-04-30T09:25:55.658+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:55.657+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:25:55.710+0000] {processor.py:840} INFO - DAG(s) 'handsome.items', 'wconcept.items', 'musinsa.items' retrieved from /opt/airflow/dags/DAGs.py
+[2024-04-30T09:25:55.825+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:55.824+0000] {dag.py:3096} INFO - Sync 3 DAGs
+[2024-04-30T09:25:55.915+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:55.915+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:25:55.934+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:55.934+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:25:55.945+0000] {logging_mixin.py:188} INFO - [2024-04-30T09:25:55.945+0000] {dag.py:3954} INFO - Setting next_dagrun for wconcept.items to 2024-04-29 03:30:00+00:00, run_after=2024-04-30 03:30:00+00:00
+[2024-04-30T09:25:56.001+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/DAGs.py took 0.377 seconds

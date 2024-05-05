@@ -1,0 +1,38 @@
+[2024-05-05T08:51:35.763+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-05T08:51:35.796+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: handsome.items.fetch_product_links manual__2024-05-05T08:51:32.837061+00:00 [queued]>
+[2024-05-05T08:51:35.809+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: handsome.items.fetch_product_links manual__2024-05-05T08:51:32.837061+00:00 [queued]>
+[2024-05-05T08:51:35.810+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 3
+[2024-05-05T08:51:35.829+0000] {taskinstance.py:2327} INFO - Executing <Task(FetchProductListFromCategoryOperator): fetch_product_links> on 2024-05-05 08:51:32.837061+00:00
+[2024-05-05T08:51:35.835+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=83) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-05T08:51:35.838+0000] {standard_task_runner.py:63} INFO - Started process 85 to run task
+[2024-05-05T08:51:35.837+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'handsome.items', 'fetch_product_links', 'manual__2024-05-05T08:51:32.837061+00:00', '--job-id', '86', '--raw', '--subdir', 'DAGS_FOLDER/handsome/DAGs.py', '--cfg-path', '/tmp/tmpu_7zl0h6']
+[2024-05-05T08:51:35.842+0000] {standard_task_runner.py:91} INFO - Job 86: Subtask fetch_product_links
+[2024-05-05T08:51:35.906+0000] {task_command.py:426} INFO - Running <TaskInstance: handsome.items.fetch_product_links manual__2024-05-05T08:51:32.837061+00:00 [running]> on host 8f2b7c684425
+[2024-05-05T08:51:36.080+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='400CC' AIRFLOW_CTX_DAG_ID='handsome.items' AIRFLOW_CTX_TASK_ID='fetch_product_links' AIRFLOW_CTX_EXECUTION_DATE='2024-05-05T08:51:32.837061+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-05T08:51:32.837061+00:00'
+[2024-05-05T08:51:36.081+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-05T08:51:36.142+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-05T08:51:36.143+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/handsome/ops/products.py", line 33, in execute
+    items = self._gather()
+            ^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/handsome/ops/products.py", line 55, in _gather
+    while category in self.categories_list:
+          ^^^^^^^^
+UnboundLocalError: cannot access local variable 'category' where it is not associated with a value
+[2024-05-05T08:51:36.158+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=handsome.items, task_id=fetch_product_links, execution_date=20240505T085132, start_date=20240505T085135, end_date=20240505T085136
+[2024-05-05T08:51:36.177+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 86 for task fetch_product_links (cannot access local variable 'category' where it is not associated with a value; 85)
+[2024-05-05T08:51:36.213+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-05-05T08:51:36.246+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-05T08:51:36.248+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
