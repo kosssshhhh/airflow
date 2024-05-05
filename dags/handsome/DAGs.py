@@ -28,7 +28,9 @@ with DAG(
     start = EmptyOperator(task_id="start")
     
     """작업"""
+    
     fetch_links = FetchProductListFromCategoryOperator(task_id='fetch_product_links')
+    
     """작업"""
     
     end = EmptyOperator(task_id="end")
