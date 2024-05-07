@@ -1,16 +1,12 @@
-import asyncio
+# import asyncio
 import logging
-import random
 import requests
+from bs4 import BeautifulSoup
 
-import httpx
-from airflow.exceptions import AirflowSkipException
+# import httpx
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
-from airflow.models.variable import Variable
 from airflow.utils.context import Context
-from pendulum.datetime import DateTime
-from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
