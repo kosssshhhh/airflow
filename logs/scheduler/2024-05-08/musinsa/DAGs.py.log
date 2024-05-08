@@ -1,0 +1,7 @@
+[2024-05-08T03:34:11.112+0000] {processor.py:161} INFO - Started process (PID=710) to work on /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-08T03:34:11.115+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/musinsa/DAGs.py for tasks to queue
+[2024-05-08T03:34:11.117+0000] {logging_mixin.py:188} INFO - [2024-05-08T03:34:11.116+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-08T03:34:13.377+0000] {processor.py:840} INFO - DAG(s) 'musinsa.items' retrieved from /opt/airflow/dags/musinsa/DAGs.py
+[2024-05-08T03:34:13.438+0000] {logging_mixin.py:188} INFO - [2024-05-08T03:34:13.438+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-08T03:34:13.485+0000] {logging_mixin.py:188} INFO - [2024-05-08T03:34:13.484+0000] {dag.py:3954} INFO - Setting next_dagrun for musinsa.items to 2024-05-08 19:30:00+00:00, run_after=2024-05-09 19:30:00+00:00
+[2024-05-08T03:34:13.502+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/musinsa/DAGs.py took 2.401 seconds

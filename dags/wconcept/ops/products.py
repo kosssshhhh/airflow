@@ -12,7 +12,7 @@ from pendulum.datetime import DateTime
 from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
-MAX_COUNT = 10
+MAX_COUNT = 100
 
 # TODO: DB에서 불러오기
 middle_category_list = ['10101201', '10101202', '10101203', '10101204', '10101205',
@@ -34,8 +34,6 @@ class FetchProductListFromCategoryOperator(BaseOperator):
     ):
         # items = asyncio.
         total_product_list, total_product_info_list = self._gather()
-        logger.info("product_list : ", total_product_list)
-        logger.info("product_info_list : ", total_product_info_list)
 
         context["task_instance"].xcom_push(key="product_id_list", value=total_product_list)
         context["task_instance"].xcom_push(key="product_list", value=total_product_info_list)
@@ -103,7 +101,6 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         
 
 class FetchProductOperator(BaseOperator):
-# TODO: FetchProductImageOperator
     url = "https://www.wconcept.co.kr/Ajax/GetProductsInfo"
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -119,7 +116,6 @@ class FetchProductOperator(BaseOperator):
         logger.info(f"xcomData : {xcomData}")
         
         product_info_result = self._gather(xcomData)
-        logger.info(f"result : {product_info_result}")
         context["task_instance"].xcom_push(key="product_info", value=product_info_result)
         
 
@@ -129,7 +125,6 @@ class FetchProductOperator(BaseOperator):
     
     def _post(self, url, payload):
         response = requests.post(url, headers=self.headers, data=payload)
-        logger.info(f"response : {response.text}")
         return response
  
     
@@ -138,7 +133,6 @@ class FetchProductOperator(BaseOperator):
         
         for product_id, product_fp, ranking, middle_item_count in xcomData: 
             payload = {"itemcds": int(product_id)}
-            logger.info(f"product_id : {product_id}")
 
             product = self._processing(self._fetch(self.url, payload), product_fp)
             product['rank_score'] = get_rank_score(int(ranking), int(middle_item_count))

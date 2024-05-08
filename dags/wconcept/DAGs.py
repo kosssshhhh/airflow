@@ -12,6 +12,14 @@ from wconcept.ops.products import (
     FetchProductOperator
 )
 
+from wconcept.ops.reviews import (
+    FetchReviewOperator
+)
+
+from wconcept.ops.images import (
+    FetchImageOperator
+)
+
 __DEFAULT_ARGS__ = {
     'owner': '400CC',
     'retries': 2,
@@ -32,10 +40,8 @@ with DAG(
     """"""
     fetch_products = FetchProductListFromCategoryOperator(task_id='fetch.products')
     fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
-    fetch_products_reviews = EmptyOperator(task_id='fetch.products.reviews')
-    # fetch_products = FetchProductListFromCategoryOperator(task_id='fetch.products')
-    # fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
-    # fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
+    fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
+    fetch_products_images = FetchImageOperator(task_id='fetch.products.images')
     """작업"""
     
     load_images = EmptyOperator(task_id="load.images")
@@ -45,7 +51,7 @@ with DAG(
     end = EmptyOperator(task_id="end")
     
     start >> fetch_products >> fetch_products_info >> load_products >> end
-    # start >> fetch_products >> fetch_products_images >> load_images >> end
+    start >> fetch_products >> fetch_products_images >> load_images >> end
     start >> fetch_products >> fetch_products_reviews >> load_reviews >> end
     
     
