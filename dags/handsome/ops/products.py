@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
-from infra.cache.decorator import MongoResponseCache
+# from infra.cache.decorator import MongoResponseCache
 
 logger = logging.getLogger(__name__)
 
@@ -218,7 +218,7 @@ class FetchProductOperator(BaseOperator):
         response = requests.get(url, headers=self.headers)
         return response
     
-    @MongoResponseCache(type='json', key='handsome.product')
+    # @MongoResponseCache(type='json', key='handsome.product')
     def _fetch(self, url: str, key=None):
         response = self._get(url)
         soup = BeautifulSoup(response.text, 'lxml')
