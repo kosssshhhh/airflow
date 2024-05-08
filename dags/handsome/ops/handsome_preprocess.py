@@ -1,4 +1,4 @@
-class HandsomePreprocess:
+class handsome_preprocess:
     def get_product(self, goods):
         product = {
             'product_id': goods['goodsNo'],
@@ -107,3 +107,24 @@ class HandsomePreprocess:
             rank_score = 1
             
         return rank_score
+    
+    def get_payload(self, max_item_counts, middle_category, gender):
+        gender_type = self.discriminate_gender_type(gender)
+        payload = {
+            "custNo": "",
+            "dateType": "daily",
+            "domain": 'WOMEN',
+            "genderType": gender_type,
+            "depth1Code": "10101",
+            "depth2Code": middle_category,
+            "pageNo": 1,
+            "pageSize": max_item_counts
+            }
+        
+        return payload       
+    
+    def discriminate_gender_type(self, gender):
+        if gender == 'men':
+            return 'men'
+        else:
+            return 'women'
