@@ -1,0 +1,7 @@
+[2024-05-08T03:34:08.617+0000] {processor.py:161} INFO - Started process (PID=709) to work on /opt/airflow/dags/handsome/DAGs.py
+[2024-05-08T03:34:08.620+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/handsome/DAGs.py for tasks to queue
+[2024-05-08T03:34:08.624+0000] {logging_mixin.py:188} INFO - [2024-05-08T03:34:08.623+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/handsome/DAGs.py
+[2024-05-08T03:34:08.899+0000] {processor.py:840} INFO - DAG(s) 'handsome.items' retrieved from /opt/airflow/dags/handsome/DAGs.py
+[2024-05-08T03:34:08.980+0000] {logging_mixin.py:188} INFO - [2024-05-08T03:34:08.980+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-08T03:34:09.009+0000] {logging_mixin.py:188} INFO - [2024-05-08T03:34:09.008+0000] {dag.py:3954} INFO - Setting next_dagrun for handsome.items to 2024-05-08 19:30:00+00:00, run_after=2024-05-09 19:30:00+00:00
+[2024-05-08T03:34:09.037+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/handsome/DAGs.py took 0.442 seconds
