@@ -1,1 +1,0 @@
-[2024-05-05T04:20:32.855+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: mysql_save.main scheduled__2024-05-04T00:00:00+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?
