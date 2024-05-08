@@ -1,4 +1,4 @@
-./logs
+/logs
 
 # Ignore all .pyc files
 *.pyc
