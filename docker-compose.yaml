@@ -85,6 +85,11 @@ x-airflow-common:
     postgres:
       condition: service_healthy
 
+
+networks:
+  some-network:
+    external: true
+
 services:
   postgres:
     image: postgres:13
@@ -100,7 +105,9 @@ services:
       retries: 5
       start_period: 5s
     restart: always
-
+    networks:
+      - some-network
+  
   redis:
     image: redis:latest
     expose:
@@ -112,6 +119,8 @@ services:
       retries: 50
       start_period: 30s
     restart: always
+    networks:
+      - some-network
 
   airflow-webserver:
     <<: *airflow-common
@@ -129,6 +138,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - some-network
 
   airflow-scheduler:
     <<: *airflow-common
@@ -144,6 +155,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - some-network
 
   airflow-worker:
     <<: *airflow-common
@@ -167,6 +180,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - some-network
 
   airflow-triggerer:
     <<: *airflow-common
@@ -182,6 +197,9 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - some-network
+
 
   airflow-init:
     <<: *airflow-common
@@ -246,6 +264,8 @@ services:
     user: "0:0"
     volumes:
       - ${AIRFLOW_PROJ_DIR:-.}:/sources
+    networks:
+      - some-network
 
   airflow-cli:
     <<: *airflow-common
@@ -259,6 +279,8 @@ services:
       - bash
       - -c
       - airflow
+    networks:
+      - some-network
 
   # You can enable flower by adding "--profile flower" option e.g. docker-compose --profile flower up
   # or by explicitly targeted on the command line e.g. docker-compose up flower.
@@ -281,6 +303,9 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-
+    networks:
+      - some-network
 volumes:
   postgres-db-volume:
+
+      

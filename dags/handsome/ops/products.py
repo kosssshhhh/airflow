@@ -7,123 +7,16 @@ from bs4 import BeautifulSoup
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
-# from infra.cache.decorator import MongoResponseCache
+
+from core.infra.cache.decorator import MongoResponseCache
+from handsome.ops.handsome_preprocess import handsome_preprocess
 
 logger = logging.getLogger(__name__)
 
-class HandsomePreprocess:
-    def get_product(self, goods):
-        product = {
-            'product_id': goods['goodsNo'],
-            'brand': goods['brandNm'],
-            'fixed_price': goods['norPrc'],
-            'discounted_price': goods['salePrc'],
-            'url': self.extract_images(goods),
-            'colors': self.extract_color(goods),
-            'sizes': self.extract_size(goods),
-            'review_count': goods['goodsRevCnt']
-        }
-        return product
-
-    def get_product_info(self, soup, product_id):
-        # product_info 요소가 있으면 그 값을 사용하고, 없으면 None을 할당
-        product_info_elements = soup.select('div.prd-desc-box')
-        product_info_text = product_info_elements[0].text if product_info_elements else None
-
-        # fitting_info 요소가 있으면 그 값을 사용하고, 없으면 None을 할당
-        fitting_info_elements = soup.select('p.cmp-font')
-        fitting_info_text = fitting_info_elements[0].text if fitting_info_elements else None
-
-        # 상품 정보 구조
-        productInfo = {
-            'product_id': product_id,
-            'product_info': product_info_text,
-            'fitting_info': fitting_info_text,
-            'additional_info': self.extract_additional_info(soup)
-        }
-
-        return productInfo
-
-    def get_review(self, reviews):
-        review_list = []
-        for review in reviews['payload']['revAllList']:
-            # 키
-            try:
-                height = review['revPrfleList'][0]['mbrPrfleValNm']
-            except:
-                height = None
-            # 평소 사이즈
-            try:
-                nor_size = review['revPrfleList'][1]['mbrPrfleValNm']
-            except:
-                nor_size = None
-
-            data = {
-                'product_id': review['goodsNo'],
-                'review_id': review['revNo'],
-                'rating': review['revScrVal'],
-                'written_date': review['revWrtDtm'],
-                'user_id': review['loginId'],
-                'body': review['revCont'],
-                'product_sku': {'color': review['goodsClorNm'], 'size': review['goodsSzNm']},
-                'import_source': review['shopNm'],
-                'user_height': height,
-                'user_size': nor_size
-            }
-            review_list.append(data)
-        return review_list
-
-    def extract_images(self, goods):
-        image_urls = []
-        try:    
-            for i in range(len(goods['colorInfo'])):
-                for j in range(len(goods['colorInfo'][i]['colorContInfo'])):
-                    colorContInfo = goods['colorInfo'][i]['colorContInfo'][j]['dispGoodsContUrl']
-                    image_urls.append(colorContInfo)
-        except:
-            pass
-        return image_urls
-    
-    
-    def extract_color(self, goods):
-        colors = []
-        try:
-            for color in goods['colorInfo']:
-                colors.append(color['optnNm'])
-        except:
-            pass
-        return colors
-    
-    
-    def extract_size(self, goods):
-        sizes = []
-        for i in range(len(goods['colorInfo'][0]['colorSizeInfo'])):
-            size_info = goods['colorInfo'][0]['colorSizeInfo'][i]['erpSzCd']
-            sizes.append(size_info)
-        return sizes
-
-    def extract_additional_info(self, soup):
-        try:
-            additional_infos = soup.select('ul.cmp-list.list-dotType2.bottom6')
-            additional_info_processed = []
-            
-            for info in additional_infos:
-                additional_info_processed.append(info.text)
-        except:
-            additional_info_processed = None
-        return additional_info_processed
-
-    def get_rank_score(self, ranking, item_count):
-        try:
-            rank_score = 1 - ((ranking - 1) / (item_count - 1))
-        except:
-            rank_score = 1
-            
-        return rank_score
 
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
-    preprocessor = HandsomePreprocess()
+    preprocessor = handsome_preprocess()
     url = 'https://www.thehandsome.com/api/display/1/ko/category/categoryGoodsList?dispMediaCd=10&sortGbn=20&pageSize={ITEMS_COUNT}&pageNo=1&norOutletGbCd=J&dispCtgNo={small_category_num}&productListLayout=4&theditedYn=N'
     
     max_item_counts: int = 1
@@ -161,8 +54,9 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_list", value=product_list)
         context["task_instance"].xcom_push(key="product_image_urls", value=product_image_urls)
         context["task_instance"].xcom_push(key="product_review_count", value=product_review_count)
-    
-    def _fetch(self, url: str):
+        
+    @MongoResponseCache(type='json', key='handsome.product')
+    def _fetch(self, url: str,key=None):
         response = requests.get(url, headers=self.headers)
         return response.json()
     
@@ -173,7 +67,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         
         for category in self.categories_list:
             url = self.url.format(ITEMS_COUNT=self.max_item_counts, small_category_num=category)
-            tasks += self._processing(self._fetch(url), category)
+            tasks += self._processing(self._fetch(url=url), category)
             
         return tasks
             
@@ -194,7 +88,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
 
 # 두번째
 class FetchProductOperator(BaseOperator):
-    preprocessor = HandsomePreprocess()
+    preprocessor = handsome_preprocess()
     url = 'https://pcw.thehandsome.com/ko/PM/productDetail/{product_id}?itmNo=003'
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -218,8 +112,8 @@ class FetchProductOperator(BaseOperator):
         response = requests.get(url, headers=self.headers)
         return response
     
-    # @MongoResponseCache(type='json', key='handsome.product')
-    def _fetch(self, url: str, key=None):
+
+    def _fetch(self, url: str):
         response = self._get(url)
         soup = BeautifulSoup(response.text, 'lxml')
         return soup
@@ -231,12 +125,12 @@ class FetchProductOperator(BaseOperator):
         for product in xcomData:
             url = self.url.format(product_id = product['product_id'])
             # tasks.append(self._parse(self._fetch(url), product['product_id']))
-            tasks.append(self.preprocessor.get_product_info(self._fetch(url=url), product['product_id']))
+            tasks.append(self.preprocessor.get_product_info(self._fetch(url), product['product_id']))
         return tasks
     
     
 class FetchReviewOperator(BaseOperator):
-    preprocessor = HandsomePreprocess()
+    preprocessor = handsome_preprocess()
     url = 'https://www.thehandsome.com/api/goods/1/ko/goods/{goodsNo}/reviews?sortTypeCd=latest&revGbCd=&pageSize={goodsRevCnt}&pageNo=1'
     
     headers = {
