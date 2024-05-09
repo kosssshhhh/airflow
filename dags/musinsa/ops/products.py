@@ -11,17 +11,19 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 
 logger = logging.getLogger(__name__)
-MAX_COUNT = 1
+MAX_COUNT = 100
 
 # TODO: DB에서 불러오기
-middle_category_list = ['001006', '001004', '001005', '001010', '001002', '001003',
-                        '001001', '001011', '001013', '001008', '002022', '002001',
-                        '002002', '002025', '002017', '002003', '002020', '002019',
-                        '002023', '002018', '002004', '002008', '002007', '002024',
-                        '002009', '002013', '002012', '002016', '002021', '002014',
-                        '002006', '002015', '003002', '003007', '003008', '003004',
-                        '003009', '003005', '003010', '003011', '003006', '002006',
-                        '002007', '002008', '022001', '022002', '022003']
+# middle_category_list = ['001006', '001004', '001005', '001010', '001002', '001003',
+#                         '001001', '001011', '001013', '001008', '002022', '002001',
+#                         '002002', '002025', '002017', '002003', '002020', '002019',
+#                         '002023', '002018', '002004', '002008', '002007', '002024',
+#                         '002009', '002013', '002012', '002016', '002021', '002014',
+#                         '002006', '002015', '003002', '003007', '003008', '003004',
+#                         '003009', '003005', '003010', '003011', '003006', '002006',
+#                         '002007', '002008', '022001', '022002', '022003']
+
+middle_category_list = ['001006', '001004']
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
     url = 'https://www.musinsa.com/categories/item/{category_number}?d_cat_cd={category_number}&brand=&list_kind=small&sort=sale_high&sub_sort=1d&page={page}&display_cnt=90&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&plusDeliveryYn=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure='
@@ -37,8 +39,9 @@ class FetchProductListFromCategoryOperator(BaseOperator):
     ):
         # items = asyncio.
         total_product_list = self._gather()
-        
         total_product_id_list = [item[0] for item in total_product_list]
+        
+        logger.info(f"product_count: {len(total_product_list)}")
 
         context["task_instance"].xcom_push(key="product_id_list", value=total_product_id_list)
         context["task_instance"].xcom_push(key="product_list", value=total_product_list)
