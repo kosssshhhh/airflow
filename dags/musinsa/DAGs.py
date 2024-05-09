@@ -1,18 +1,21 @@
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from airflow.operators.empty import EmptyOperator
 import pendulum
-from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
 from musinsa.ops.products import (
-    FetchProductLinksOperator,
-    FetchProductDetailsOperator,
+    FetchProductListFromCategoryOperator,
+    FetchProductOperator
 )
 
 from musinsa.ops.reviews import (
-    printOperator,    
+    FetchReviewOperator
 )
+
+from musinsa.ops.images import (
+    FetchImageOperator
+)
+
 __DEFAULT_ARGS__ = {
     'owner': '400CC',
     'retries': 2,
@@ -30,10 +33,22 @@ with DAG(
 ) as dag:
     start = EmptyOperator(task_id="start")
     
-    fetch_links = FetchProductLinksOperator(task_id='fetch_product_links', category_nums=['001006', '001004'])
-    fetch_details = FetchProductDetailsOperator(task_id='fetch_product_details', product_urls="{{ ti.xcom_pull(task_ids='fetch_product_links', key='product_links') }}")
+    """"""
+    fetch_products = FetchProductListFromCategoryOperator(task_id='fetch.products')
+    fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
+    fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
+    fetch_products_images = FetchImageOperator(task_id='fetch.products.images')
+    """작업"""
+    
+    load_images = EmptyOperator(task_id="load.images")
+    load_reviews = EmptyOperator(task_id="load.reviews")
+    load_products = EmptyOperator(task_id="load.products")
     
     end = EmptyOperator(task_id="end")
     
-    start >> fetch_links >> fetch_details >> end
+    start >> fetch_products >> fetch_products_info >> load_products >> end
+    start >> fetch_products >> fetch_products_images >> load_images >> end
+    start >> fetch_products >> fetch_products_reviews >> load_reviews >> end
+    
+    
     

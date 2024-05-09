@@ -7,8 +7,10 @@ from bs4 import BeautifulSoup
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
+
 from core.infra.cache.decorator import MongoResponseCache
 from handsome.ops.handsome_preprocess import handsome_preprocess
+
 logger = logging.getLogger(__name__)
 
 
@@ -52,6 +54,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_list", value=product_list)
         context["task_instance"].xcom_push(key="product_image_urls", value=product_image_urls)
         context["task_instance"].xcom_push(key="product_review_count", value=product_review_count)
+        
     @MongoResponseCache(type='json', key='handsome.product')
     def _fetch(self, url: str,key=None):
         response = requests.get(url, headers=self.headers)
