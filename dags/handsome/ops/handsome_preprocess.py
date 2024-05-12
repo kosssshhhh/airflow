@@ -65,8 +65,10 @@ class handsome_preprocess:
         try:    
             for i in range(len(goods['colorInfo'])):
                 for j in range(len(goods['colorInfo'][i]['colorContInfo'])):
-                    colorContInfo = goods['colorInfo'][i]['colorContInfo'][j]['dispGoodsContUrl']
-                    image_urls.append(colorContInfo)
+                    check = goods['colorInfo'][i]['colorContInfo'][j]['imgGbCd']
+                    if 'P' in check:
+                        colorContInfo = goods['colorInfo'][i]['colorContInfo'][j]['dispGoodsContUrl']
+                        image_urls.append(colorContInfo)
         except:
             pass
         return image_urls
