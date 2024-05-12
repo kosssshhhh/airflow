@@ -6,7 +6,7 @@ class wconcept_preprocess:
     def get_product(self, tasks, product_fp):
         # 카테고리
         categories = tasks['category']
-        category_per_depth = self.get_category_per_depth(categories)
+        # category_per_depth = self.get_category_per_depth(categories)
 
         product = {
         'brand': tasks['brandNameKr'],
@@ -16,27 +16,27 @@ class wconcept_preprocess:
         'fixed_price': tasks['customerPrice'],
         'discounted_price': product_fp,
         'product_name': tasks['itemName'],
-        'category_per_depth': category_per_depth,
+        # 'category_per_depth': category_per_depth,
         'color': tasks['color1'],
         }   
         
         return product
     
-    def get_category_per_depth(self, categories):
-        category_per_depth = []
-        for category in categories:
-            medium_name = category['mediumName']
-            category_depthname1 = category['categoryDepthname1']
-            category_depthname2 = category['categoryDepthname2']
-            category_depthname3 = category['categoryDepthname3']
+    # def get_category_per_depth(self, categories):
+    #     category_per_depth = []
+    #     for category in categories:
+    #         medium_name = category['mediumName']
+    #         category_depthname1 = category['categoryDepthname1']
+    #         category_depthname2 = category['categoryDepthname2']
+    #         category_depthname3 = category['categoryDepthname3']
             
-            dic = {'medium_name': medium_name,
-                'category_depthname1': category_depthname1,
-                'category_depthname2': category_depthname2,
-                'category_depthname3': category_depthname3}
+    #         dic = {'medium_name': medium_name,
+    #             'category_depthname1': category_depthname1,
+    #             'category_depthname2': category_depthname2,
+    #             'category_depthname3': category_depthname3}
             
-            category_per_depth.append(dic)
-        return category_per_depth
+    #         category_per_depth.append(dic)
+    #     return category_per_depth
 
     def get_rank_score(self, ranking, total_items_count):
         return 1 - (ranking / total_items_count)
