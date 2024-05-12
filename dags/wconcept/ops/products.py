@@ -10,7 +10,7 @@ from airflow.models.variable import Variable
 from airflow.utils.context import Context
 from pendulum.datetime import DateTime
 from bs4 import BeautifulSoup
-from wconcept.ops.wconcept_preprocess import wconcept_preprocess
+from wconcept.ops.wconcept_preprocess import WconceptPreprocess
 
 logger = logging.getLogger(__name__)
 MAX_COUNT = 1
@@ -21,7 +21,7 @@ middle_category_list = ['10101201', '10101202', '10101203', '10101204', '1010120
                         '10101211', '10101212']
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
-    preprocessor = wconcept_preprocess()
+    preprocessor = WconceptPreprocess()
     url = 'https://api-display.wconcept.co.kr/display/api/v2/best/products'
     max_item_counts: int = MAX_COUNT
     middle_category_list = middle_category_list
@@ -70,7 +70,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         
 
 class FetchProductOperator(BaseOperator):
-    preprocessor = wconcept_preprocess()
+    preprocessor = WconceptPreprocess()
     url = "https://www.wconcept.co.kr/Ajax/GetProductsInfo"
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',

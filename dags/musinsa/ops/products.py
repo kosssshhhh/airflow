@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
-from musinsa.ops.musinsa_preprocess import musinsa_preprocess
+from musinsa.ops.musinsa_preprocess import MusinsaPreprocess
 
 logger = logging.getLogger(__name__)
 MAX_COUNT = 100
@@ -27,7 +27,7 @@ MAX_COUNT = 100
 middle_category_list = ['001006', '001004']
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
-    preprocessor = musinsa_preprocess()
+    preprocessor = MusinsaPreprocess()
     url = 'https://www.musinsa.com/categories/item/{category_number}?d_cat_cd={category_number}&brand=&list_kind=small&sort=sale_high&sub_sort=1d&page={page}&display_cnt=90&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&plusDeliveryYn=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure='
     max_item_counts: int = MAX_COUNT
     middle_category_list = middle_category_list
@@ -101,7 +101,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         
 
 class FetchProductOperator(BaseOperator):
-    preprocessor = musinsa_preprocess()
+    preprocessor = MusinsaPreprocess()
     info_URL = 'https://www.musinsa.com/app/goods/{product_id}'
     stat_URL = 'https://goods-detail.musinsa.com/goods/{product_id}/stat'
     like_URL = 'https://like.musinsa.com/like/api/v2/liketypes/goods/counts'
