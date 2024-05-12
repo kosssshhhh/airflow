@@ -1,8 +1,11 @@
+import logging
 import numpy as np
 import re
 import json
 
-class musinsa_preprocess:
+logger = logging.getLogger(__name__)
+
+class MusinsaPreprocess:
     def get_rank_score(self, ranking, total_items_count):
         return 1 - (ranking / total_items_count)
 
@@ -94,3 +97,77 @@ class musinsa_preprocess:
         info = match.group(1)
         
         return json.loads(info)
+
+
+class MusinsaReviewPreprocess:
+    def parse(self, soup, product_id, review_type):
+        one_page_reviews = []
+        reviews = soup.select('div.review-list')
+        
+        for review in reviews:
+            review_dict = self.review_preprocessing(review, product_id)
+            review_dict['review_type'] = review_type
+            logger.info(f"review_dict : {review_dict}")
+            one_page_reviews.append(review_dict)
+            
+        return one_page_reviews
+
+    def review_preprocessing(self, review, product_id):
+        # 댓글 단 사람
+        user_name = review.select('p.review-profile__name')[0].text
+
+        # 리뷰 id
+        review_id = review.select('div.review-contents')[0]['data-review-no']
+        
+        # 메타 데이터
+        meta_dict = {}
+        metas = review.select('li.review-evaluation--type3__item')
+        for meta in metas:
+            key, value = meta.text.split(' ', 1)  # 공백을 기준으로 처음 나오는 부분만 분리
+            meta_dict[key] = value
+
+        # 리뷰 내용
+        content = review.select('div.review-contents__text')[0].text
+
+        # 배지
+        badge = review.select('span.review-evaluation-button--type3__count')
+
+        # 도움돼요
+        helpful = badge[0].text
+
+        # 스타일 좋아요
+        try:
+            style_good = badge[1].text
+            
+        except:
+            style_good = None
+
+        # 별 개수
+        star_percentage = review.select('span.review-list__rating__active')[0]['style']
+
+        if star_percentage == 'width: 100%':
+            star = 5
+        elif star_percentage == 'width: 80%':
+            star = 4
+        elif star_percentage == 'width: 60%':
+            star = 3
+        elif star_percentage == 'width: 40%':
+            star = 2
+        elif star_percentage == 'width: 20%':
+            star = 1
+        else:
+            star = 0
+
+        data = {
+            'product_id': product_id,
+            'review_id': review_id,
+            'user_info': user_name,
+            'meta_data': meta_dict,
+            'body': content,
+            'helpful': helpful,
+            'good_style': style_good,
+            'rate': star
+        }
+
+        return data
+    

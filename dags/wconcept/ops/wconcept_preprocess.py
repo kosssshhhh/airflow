@@ -2,7 +2,7 @@ import numpy as np
 import re
 from bs4 import BeautifulSoup
 
-class wconcept_preprocess:
+class WconceptPreprocess:
     def get_product(self, tasks, product_fp):
         # 카테고리
         categories = tasks['category']
@@ -74,7 +74,7 @@ class wconcept_preprocess:
         
         return product_list, product_info_list
     
-class wconcept_review_preprocess:
+class WconceptReviewPreprocess:
     def get_option(self, review_info):
         try:
             option = review_info.select('div.pdt_review_option > p')[0].text.strip()

@@ -1,4 +1,4 @@
-class handsome_preprocess:
+class HandsomePreprocess:
     def get_product(self, goods):
         product = {
             'product_id': goods['goodsNo'],

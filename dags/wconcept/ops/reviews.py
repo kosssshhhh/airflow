@@ -7,14 +7,14 @@ from bs4 import BeautifulSoup
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
-from wconcept.ops.wconcept_preprocess import wconcept_review_preprocess
+from wconcept.ops.wconcept_preprocess import WconceptReviewPreprocess
 
 
 logger = logging.getLogger(__name__)
 
 
 class FetchReviewOperator(BaseOperator):
-    preprocessor = wconcept_review_preprocess()
+    preprocessor = WconceptReviewPreprocess()
 # TODO: FetchProductImageOperator
     payload_URL = "https://www.wconcept.co.kr/Ajax/GetProductsInfo"
     review_URL = "https://www.wconcept.co.kr/Ajax/ProductReViewList"

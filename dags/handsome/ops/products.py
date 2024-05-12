@@ -9,14 +9,14 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 
 from core.infra.cache.decorator import MongoResponseCache
-from handsome.ops.handsome_preprocess import handsome_preprocess
+from handsome.ops.handsome_preprocess import HandsomePreprocess
 
 logger = logging.getLogger(__name__)
 
 
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
-    preprocessor = handsome_preprocess()
+    preprocessor = HandsomePreprocess()
     url = 'https://www.thehandsome.com/api/display/1/ko/category/categoryGoodsList?dispMediaCd=10&sortGbn=20&pageSize={ITEMS_COUNT}&pageNo=1&norOutletGbCd=J&dispCtgNo={small_category_num}&productListLayout=4&theditedYn=N'
     
     max_item_counts: int = 1
@@ -88,7 +88,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
 
 # 두번째
 class FetchProductOperator(BaseOperator):
-    preprocessor = handsome_preprocess()
+    preprocessor = HandsomePreprocess()
     url = 'https://pcw.thehandsome.com/ko/PM/productDetail/{product_id}?itmNo=003'
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
