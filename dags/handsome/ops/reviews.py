@@ -1,3 +1,14 @@
+import logging
+import requests
+import json
+
+from airflow.models.baseoperator import BaseOperator
+from handsome.ops.handsome_preprocess import handsome_preprocess
+from airflow.utils.context import Context
+from airflow.models.taskinstance import TaskInstance
+
+logger = logging.getLogger(__name__)
+
 class FetchReviewOperator(BaseOperator):
     preprocessor = handsome_preprocess()
     url = 'https://www.thehandsome.com/api/goods/1/ko/goods/{goodsNo}/reviews?sortTypeCd=latest&revGbCd=&pageSize={goodsRevCnt}&pageNo=1'

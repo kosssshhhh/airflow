@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
+from musinsa.ops.musinsa_preprocess import musinsa_preprocess
 
 logger = logging.getLogger(__name__)
 MAX_COUNT = 100
@@ -26,6 +27,7 @@ MAX_COUNT = 100
 middle_category_list = ['001006', '001004']
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
+    preprocessor = musinsa_preprocess()
     url = 'https://www.musinsa.com/categories/item/{category_number}?d_cat_cd={category_number}&brand=&list_kind=small&sort=sale_high&sub_sort=1d&page={page}&display_cnt=90&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&plusDeliveryYn=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure='
     max_item_counts: int = MAX_COUNT
     middle_category_list = middle_category_list
@@ -61,12 +63,12 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         
         for middle_category in self.middle_category_list:
             page = 1
-            url = self.url.format(category_number=middle_category, page=page)
+            url = self.url.format(category_number=middle_category, page=1)
             soup = BeautifulSoup(self._fetch(url).text, 'lxml')
             
             flag = 0
             
-            total_page = int(soup.select('span.totalPagingNum')[0].text)
+            total_page = self.preprocessor.get_total_page_counts(soup)
             
             pd_list = []
             
@@ -77,7 +79,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
                     
                     if len(pd_list) == self.max_item_counts:
                         flag = 1
-                        break
+                        break   
                 
                 page += 1
                 
@@ -86,15 +88,9 @@ class FetchProductListFromCategoryOperator(BaseOperator):
                 
                 url = self.url.format(category_number=middle_category, page=page)
                 soup = BeautifulSoup(self._fetch(url).text, 'lxml')
-                
 
-            pd_list = np.array(pd_list)
             
-            rankings = np.arange(1, len(pd_list) + 1)
-            total_items_count = np.full(len(pd_list), len(pd_list))
-            rank_score = get_rank_score(rankings, total_items_count)
-            
-            pd_list = np.column_stack((pd_list, rank_score)).tolist()
+            pd_list = self.preprocessor.merge_rank_score(pd_list)
             
             total_product_list += pd_list    
             
@@ -102,17 +98,10 @@ class FetchProductListFromCategoryOperator(BaseOperator):
                 
         return total_product_list
                 
-
-def get_rank_score(ranking, total_items_count):
-    return 1 - (ranking / total_items_count)
-            
-        
-        
-        
-
         
 
 class FetchProductOperator(BaseOperator):
+    preprocessor = musinsa_preprocess()
     info_URL = 'https://www.musinsa.com/app/goods/{product_id}'
     stat_URL = 'https://goods-detail.musinsa.com/goods/{product_id}/stat'
     like_URL = 'https://like.musinsa.com/like/api/v2/liketypes/goods/counts'
@@ -159,16 +148,15 @@ class FetchProductOperator(BaseOperator):
             stat_res = self._fetch_get(self.stat_URL.format(product_id=product_id))
             
             
-            product_json = self._parse(soup)
+            # product_json = self._parse(soup)
+            product_json = self.preprocessor.parse(soup)
             
             if product_json is None:
                 continue
             
-            product_info = self._processing(product_json)
-            
-            product_like = self._processing_like(like_res)
-            
-            product_stat = self._processing_stat(stat_res)
+            product_info = self.preprocessor.processing_info(product_json)
+            product_like = self.preprocessor.processing_like(like_res)
+            product_stat = self.preprocessor.processing_stat(stat_res)
             
             merged_data = {**product_info, **product_stat, 'like': product_like, 'rank_score': rank_score, 'middle_category': middle_category}
             
@@ -178,82 +166,7 @@ class FetchProductOperator(BaseOperator):
             
             
         return product_list 
+        
     
-    def _processing_stat(self, tasks):
-        try:
-            cumalative_sales = tasks.json()['data']['purchase']['total']
-        except:
-            cumalative_sales = None
-            
-        try:
-            ages = tasks.json()['data']['purchase']['rates']
-            ages = {key: f"{value}%" for key, value in ages.items()}
-            under_18 = f"{ages['AGE_UNDER_18']}%"
-            age_19_to_23 = f"{ages['AGE_19_TO_23']}%"
-            age_24_to_28 = f"{ages['AGE_24_TO_28']}%"
-            age_29_to_33 = f"{ages['AGE_29_TO_33']}%"
-            age_34_to_39 = f"{ages['AGE_34_TO_39']}%"
-            over_40 = f"{ages['AGE_OVER_40']}%"
-        except:
-            under_18, age_19_to_23, age_24_to_28, age_29_to_33, age_34_to_39, over_40 = None, None, None, None, None, None
 
-        # 성비
-        try:
-            male = int(tasks.json()['data']['purchase']['male'])
-            female = int(tasks.json()['data']['purchase']['female'])
-            total_count = male + female
-            male_percentage = int(round((male / total_count) * 100, -1))
-            female_percentage = int(round((female / total_count) * 100, -1))
-            male_percentage = male_percentage
-            female_percentage = female_percentage
-        except:
-            male_percentage = None
-            female_percentage = None
-            
-        return {
-            'cumalative_sales': cumalative_sales,
-            'under_18': under_18,
-            'age_19_to_23': age_19_to_23,
-            'age_24_to_28': age_24_to_28,
-            'age_29_to_33': age_29_to_33,
-            'age_34_to_39': age_34_to_39,
-            'over_40': over_40,
-            'male_percentage': male_percentage,
-            'female_percentage': female_percentage
-        }
-                
-    def _processing_like(self, tasks):
-        return tasks.json()['data']['contents']['items'][0]['count']
         
-        
-    def _processing(self, tasks):   
-        data = {
-            'product_id': tasks['goodsNo'],
-            'brand': tasks['brand'],
-            'product_num': tasks['styleNo'],
-            'fixed_price': tasks['goodsPrice']['originPrice'],
-            'discounted_price': tasks['goodsPrice']['minPrice'],
-        }
-
-        return data
-        
-    
-    def _parse(self, soup):
-        try:
-            info = soup.find_all('script', {'type':'text/javascript'})[15]
-        except:
-            return
-        info = info.string
-
-        pattern = re.compile(r'window\.__MSS__\.product\.state = ({.*?});\s*$', re.DOTALL)
-        match = pattern.search(info)
-        info = match.group(1)
-        
-        return json.loads(info)
-        
-    
-    
-    
-    
-def get_rank_score(ranking, total_items_count):
-    return 1 - (ranking / total_items_count)
