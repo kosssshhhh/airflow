@@ -6,6 +6,7 @@ from airflow.models.baseoperator import BaseOperator
 from handsome.ops.handsome_preprocess import HandsomePreprocess
 from airflow.utils.context import Context
 from airflow.models.taskinstance import TaskInstance
+from core.infra.cache.decorator import MongoResponseCache
 
 logger = logging.getLogger(__name__)
 
@@ -29,8 +30,8 @@ class FetchReviewOperator(BaseOperator):
         logger.info(f"result : {result}")
         context["task_instance"].xcom_push(key="product_reviews", value=result)
         
-        
-    def _fetch(self, url: str):
+    @MongoResponseCache(type='json', key='handsome.review')
+    def _fetch(self, url: str, key=None):
         return self._get(url).json()
 
     def _get(self, url, **kwargs):
@@ -43,5 +44,5 @@ class FetchReviewOperator(BaseOperator):
         # pid: key , review_count: value
         for product_id, review_count in outputs.items():
             url = self.url.format(goodsNo=product_id, goodsRevCnt=review_count)
-            tasks += self.preprocessor.get_review(self._fetch(url))
+            tasks += self.preprocessor.get_review(self._fetch(url=url))
         return tasks
