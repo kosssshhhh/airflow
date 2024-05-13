@@ -55,7 +55,8 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_image_urls", value=product_image_urls)
         context["task_instance"].xcom_push(key="product_review_count", value=product_review_count)
         
-    @MongoResponseCache(type='json', key='handsome.product')
+
+    @MongoResponseCache(type='json', key='handsome.product_list')
     def _fetch(self, url: str,key=None):
         response = requests.get(url, headers=self.headers)
         return response.json()
@@ -106,16 +107,17 @@ class FetchProductOperator(BaseOperator):
         logger.info(f"result : {product_info_result}")
         context["task_instance"].xcom_push(key="product_info", value=product_info_result)
         
-
-    def _get(self, url, **kwargs):
+    
+    @MongoResponseCache(type='html', key='handsome.product')
+    def _get(self, url: str, key=None):
         # self.headers
         response = requests.get(url, headers=self.headers)
-        return response
+        return response.text
     
 
     def _fetch(self, url: str):
-        response = self._get(url)
-        soup = BeautifulSoup(response.text, 'lxml')
+        response_text = self._get(url=url)
+        soup = BeautifulSoup(response_text, 'lxml')
         return soup
     
     
