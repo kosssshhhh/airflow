@@ -8,6 +8,7 @@ from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from wconcept.ops.wconcept_preprocess import WconceptReviewPreprocess
+from core.infra.cache.decorator import MongoResponseCache
 
 
 logger = logging.getLogger(__name__)
@@ -37,13 +38,23 @@ class FetchReviewOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_review", value=products_reviews_list)
         
 
-    
-    def _fetch(self, url, payload):
-        return self._post(url, payload)
-    
-    def _post(self, url, payload):
+    # def _fetch(self, url, payload, res_type):
+    #     return self._post(url, payload)
+
+
+    @MongoResponseCache(type='json', key='wconcept.review.payload', collection='wconcept.response')
+    def _post_json(self, url, payload, key=None):
         response = requests.post(url, headers=self.headers, data=payload)
-        return response
+
+        return response.json()
+
+
+    @MongoResponseCache(type='html', key='wconcept.review', collection='wconcept.response')
+    def _post_html(self, url, payload, key=None):
+        response = requests.post(url, headers=self.headers, data=payload)
+
+        return response.text
+    
  
     
     def _gather(self, xcomData):
@@ -52,7 +63,7 @@ class FetchReviewOperator(BaseOperator):
         for product_id in xcomData: 
             payload = {"itemcds": product_id}
             
-            fetch_data = self._fetch(self.payload_URL, payload).json()[0]
+            fetch_data = self._post_json(url=self.payload_URL, payload=payload)[0]
             
             request_payload = [fetch_data['itemCd'], fetch_data['category'][0]['mediumCd'], fetch_data['category'][0]['categoryCd'], fetch_data['itemTypeCd']]
             
@@ -73,7 +84,7 @@ class FetchReviewOperator(BaseOperator):
                     'itemtypecd': request_payload[3]
                 }
                 
-                reviews_in_page = BeautifulSoup(self._fetch(self.review_URL, payload).text, 'lxml')
+                reviews_in_page = BeautifulSoup(self._post_html(url=self.review_URL, payload=payload), 'lxml')
                 
                 page_review_counts = len(reviews_in_page.select('p.pdt_review_text'))
                 

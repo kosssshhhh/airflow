@@ -1,6 +1,7 @@
 import logging
 import requests
 import numpy as np
+from bs4 import BeautifulSoup
 
 # import httpx
 from airflow.exceptions import AirflowSkipException
@@ -9,8 +10,8 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.models.variable import Variable
 from airflow.utils.context import Context
 from pendulum.datetime import DateTime
-from bs4 import BeautifulSoup
 from wconcept.ops.wconcept_preprocess import WconceptPreprocess
+from core.infra.cache.decorator import MongoResponseCache
 
 logger = logging.getLogger(__name__)
 MAX_COUNT = 1
@@ -41,13 +42,14 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_list", value=total_product_info_list)
 
     
-    def _fetch(self, url, payload):
-        return self._post(url, payload).json()
+    # def _fetch(self, url, payload):
+    #     return self._post(url, payload)
         
-    
-    def _post(self, url, payload):
+
+    @MongoResponseCache(type='json', key='wconcept.product_list', collection='wconcept.response')
+    def _post(self, url, payload, key=None):
         response = requests.post(url, headers=self.headers, json=payload)
-        return response
+        return response.json()
  
     
     def _gather(self):
@@ -59,7 +61,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
                 url = self.url
                 payload = self.preprocessor.get_payload(self.max_item_counts, middle_category, gender)
                 
-                response = self._fetch(url, payload)
+                response = self._post(url=url, payload=payload)
                 product_list, product_info_list = self.preprocessor.get_product_and_product_info_list(response)
                 
                 total_product_list += product_list
@@ -87,15 +89,16 @@ class FetchProductOperator(BaseOperator):
         
         product_info_result = self._gather(xcomData)
         context["task_instance"].xcom_push(key="product_info", value=product_info_result)
-        
 
     
-    def _fetch(self, url, payload):
-        return self._post(url, payload).json()[0]
+    # def _fetch(self, url, payload):
+    #     return self._post(url=url, payload)[0]
     
-    def _post(self, url, payload):
+
+    @MongoResponseCache(type='json', key='wconcept.product', collection='wconcept.response')
+    def _post(self, url, payload, key=None):
         response = requests.post(url, headers=self.headers, data=payload)
-        return response
+        return response.json()
  
     
     def _gather(self, xcomData):
@@ -104,7 +107,7 @@ class FetchProductOperator(BaseOperator):
         for product_id, product_fp, ranking, middle_item_count in xcomData: 
             payload = {"itemcds": int(product_id)}
 
-            product = self.preprocessor.get_product(self._fetch(self.url, payload), product_fp)
+            product = self.preprocessor.get_product(self._post(url=self.url, payload=payload)[0], product_fp)
             product['rank_score'] = self.preprocessor.get_rank_score(int(ranking), int(middle_item_count))
             product_list.append(product)
             
