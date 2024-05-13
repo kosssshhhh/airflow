@@ -56,7 +56,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_review_count", value=product_review_count)
         
 
-    @MongoResponseCache(type='json', key='handsome.product_list')
+    @MongoResponseCache(type='json', key='handsome.product_list', collection='handsome.response')
     def _fetch(self, url: str,key=None):
         response = requests.get(url, headers=self.headers)
         return response.json()
@@ -108,7 +108,7 @@ class FetchProductOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_info", value=product_info_result)
         
     
-    @MongoResponseCache(type='html', key='handsome.product')
+    @MongoResponseCache(type='html', key='handsome.product', collection='handsome.response')
     def _get(self, url: str, key=None):
         # self.headers
         response = requests.get(url, headers=self.headers)

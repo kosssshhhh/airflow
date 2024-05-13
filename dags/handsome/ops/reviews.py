@@ -30,10 +30,10 @@ class FetchReviewOperator(BaseOperator):
         logger.info(f"result : {result}")
         context["task_instance"].xcom_push(key="product_reviews", value=result)
         
-    @MongoResponseCache(type='json', key='handsome.review')
+    @MongoResponseCache(type='json', key='handsome.review', collection='handsome.response')
     def _fetch(self, url: str, key=None):
         return self._get(url).json()
-
+    
     def _get(self, url, **kwargs):
         response = requests.get(url, headers=self.headers)
         return response
