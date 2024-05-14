@@ -10,9 +10,8 @@ from sqlalchemy import (
     ForeignKeyConstraint,
 )
 from sqlalchemy.orm import declarative_base
-from database.enum import MallType
-from database.base import Base
-
+from core.infra.database.enum import MallType
+from core.infra.database.models.base import Base
 
 
 class MusinsaVariable(Base):

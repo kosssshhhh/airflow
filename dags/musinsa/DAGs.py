@@ -3,6 +3,9 @@ from airflow.operators.empty import EmptyOperator
 import pendulum
 from datetime import datetime, timedelta
 
+from musinsa.ops.load.product import (
+    LoadMusinsaProduct,
+)
 from musinsa.ops.products import (
     FetchProductListFromCategoryOperator,
     FetchProductOperator
@@ -42,7 +45,7 @@ with DAG(
     
     load_images = EmptyOperator(task_id="load.images")
     load_reviews = EmptyOperator(task_id="load.reviews")
-    load_products = EmptyOperator(task_id="load.products")
+    load_products = LoadMusinsaProduct(task_id="load.products")
     
     end = EmptyOperator(task_id="end")
     
