@@ -1,8 +1,7 @@
 from sqlalchemy import Enum, Boolean, Text, Date, Float, Column, ForeignKey, Integer, String, ForeignKeyConstraint
 from sqlalchemy.orm import declarative_base
-from database.enum import MallType
-
-from base import Base
+from core.infra.database.enum import MallType
+from core.infra.database.models.base import Base
 
 class WConceptVariable(Base):
     __tablename__ = "wconcept_variable"

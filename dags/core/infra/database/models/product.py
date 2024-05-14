@@ -33,6 +33,8 @@ class SKUAttribute(Base):
     sku_id = Column(Integer, autoincrement= True, primary_key= True)
     product_id = Column(String(255), ForeignKey("product.product_id"))
     mall_type = Column(Enum(MallType), ForeignKey("product.mall_type"))
+    attr_key = Column(String(255))
+    attr_value = Column(String(255))
     __table_args__ = (
         ForeignKeyConstraint(
             ["product_id", "mall_type"], ["product.product_id", "product.mall_type"]
