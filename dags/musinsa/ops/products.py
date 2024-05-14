@@ -10,9 +10,10 @@ from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from musinsa.ops.musinsa_preprocess import MusinsaPreprocess
+from core.infra.cache.decorator import MongoResponseCache
 
 logger = logging.getLogger(__name__)
-MAX_COUNT = 100
+MAX_COUNT = 10
 
 # TODO: DB에서 불러오기
 # middle_category_list = ['001006', '001004', '001005', '001010', '001002', '001003',
@@ -48,14 +49,11 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         context["task_instance"].xcom_push(key="product_id_list", value=total_product_id_list)
         context["task_instance"].xcom_push(key="product_list", value=total_product_list)
 
-    
-    def _fetch(self, url):
-        return self._get(url)
         
-    
-    def _get(self, url):
+    @MongoResponseCache(type='html', key='musinsa.product_list', collection='musinsa.response')
+    def _get(self, url, key=None):
         response = requests.get(url, headers=self.headers)
-        return response
+        return response.text
  
     
     def _gather(self):
@@ -64,7 +62,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         for middle_category in self.middle_category_list:
             page = 1
             url = self.url.format(category_number=middle_category, page=1)
-            soup = BeautifulSoup(self._fetch(url).text, 'lxml')
+            soup = BeautifulSoup(self._get(url=url), 'lxml')
             
             flag = 0
             
@@ -87,7 +85,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
                     break
                 
                 url = self.url.format(category_number=middle_category, page=page)
-                soup = BeautifulSoup(self._fetch(url).text, 'lxml')
+                soup = BeautifulSoup(self._get(url=url), 'lxml')
 
             
             pd_list = self.preprocessor.merge_rank_score(pd_list)
@@ -121,34 +119,31 @@ class FetchProductOperator(BaseOperator):
         product_info_result = self._gather(xcomData)
         context["task_instance"].xcom_push(key="product_info", value=product_info_result)
         
-
     
-    def _fetch_get(self, url, ):
-        return self._get(url, )
-    
-    def _fetch_post(self, url, payload):
-        return self._post(url, payload)
-    
-    # TODO: decorator 추가
-    def _post(self, url, payload):
+    @MongoResponseCache(type='json', key='musinsa.product.like', collection='musinsa.response')
+    def _post(self, url, payload, key=None):
         response = requests.post(url, headers=self.headers, json=payload)
-        return response
- 
-    def _get(self, url):
+        return response.json()
+
+    @MongoResponseCache(type='json', key='musinsa.product.stat', collection='musinsa.response')
+    def _get_json(self, url, key=None):
         response = requests.get(url, headers=self.headers)
-        return response
+        return response.json()
+
+    @MongoResponseCache(type='html', key='musinsa.product.info', collection='musinsa.response')
+    def _get_html(self, url, key=None):
+        response = requests.get(url, headers=self.headers)
+        return response.text
     
     def _gather(self, xcomData):
         product_list = []
         
         for product_id, middle_category, rank_score in xcomData: 
             
-            soup = BeautifulSoup(self._fetch_get(self.info_URL.format(product_id=product_id)).text, 'lxml')
-            like_res = self._fetch_post(self.like_URL, {'relationIds': [product_id]})
-            stat_res = self._fetch_get(self.stat_URL.format(product_id=product_id))
+            soup = BeautifulSoup(self._get_html(url=self.info_URL.format(product_id=product_id)), 'lxml')
+            like_res = self._post(url=self.like_URL, payload={'relationIds': [product_id]})
+            stat_res = self._get_json(url=self.stat_URL.format(product_id=product_id))
             
-            
-            # product_json = self._parse(soup)
             product_json = self.preprocessor.parse(soup)
             
             if product_json is None:

@@ -38,12 +38,12 @@ class MusinsaPreprocess:
         return data
 
     def processing_like(self, tasks):
-        return tasks.json()['data']['contents']['items'][0]['count']
+        return tasks['data']['contents']['items'][0]['count']
 
     
     def processing_stat(self, tasks):
         try:
-            cumulative_sales = tasks.json()['data']['purchase']['total']
+            cumulative_sales = tasks['data']['purchase']['total']
         except:
             cumulative_sales = None
             
