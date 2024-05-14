@@ -66,12 +66,12 @@ class LoadMusinsaProduct(BaseOperator):
                  'female_percentage': product_variable['female_percentage'],
                  'likes': product_variable['like'],
                  'cumulative_sales': product_variable['cumulative_sales'],
-                 'under_18': product_variable['under_18'].replace('%%', ''),
-                 '19_to_23': product_variable['age_19_to_23'].replace('%%', ''),
-                 '24_to_28': product_variable['age_24_to_28'].replace('%%', ''),
-                 '29_to_33': product_variable['age_29_to_33'].replace('%%', ''),
-                 '34_to_39': product_variable['age_34_to_39'].replace('%%', ''),
-                 'over_40': product_variable['over_40'].replace('%%', ''),
+                 'age_under_18': product_variable['under_18'].replace('%%', ''),
+                 'age_19_to_23': product_variable['age_19_to_23'].replace('%%', ''),
+                 'age_24_to_28': product_variable['age_24_to_28'].replace('%%', ''),
+                 'age_29_to_33': product_variable['age_29_to_33'].replace('%%', ''),
+                 'age_34_to_39': product_variable['age_34_to_39'].replace('%%', ''),
+                 'age_over_40': product_variable['over_40'].replace('%%', ''),
                  }
                 for product_variable in product_info_list
                 if(product_variable['product_id']) not in existing_tuples
