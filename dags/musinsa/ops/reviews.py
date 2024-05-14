@@ -8,6 +8,7 @@ from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from musinsa.ops.musinsa_preprocess import MusinsaReviewPreprocess
+from core.infra.cache.decorator import MongoResponseCache
 
 logger = logging.getLogger(__name__)
 
@@ -31,16 +32,12 @@ class FetchReviewOperator(BaseOperator):
         
         context["task_instance"].xcom_push(key="product_review", value=product_review_result)
         logger.info(f"product_review_count : {len(product_review_result)}")
-
-    
-    def _fetch(self, url):
-        return self._get(url)
     
     
-    # TODO: decorator 추가
-    def _get(self, url):
+    @MongoResponseCache(type='html', key='musinsa.page.reviews', collection='musinsa.response')
+    def _get(self, url, key=None):
         response = requests.get(url, headers=self.headers)
-        return response
+        return response.text
     
     def _gather(self, xcomData):
         product_review_list = []
@@ -52,7 +49,7 @@ class FetchReviewOperator(BaseOperator):
                 page_num = 1    
                 while True:
                     url = self.URL.format(review_type=review_type, product_id=product_id, page_num=page_num)
-                    soup = BeautifulSoup(self._fetch(url).text, 'lxml')
+                    soup = BeautifulSoup(self._get(url=url), 'lxml')
                     
                     if not soup.select('p.review-profile__name'):
                         break
@@ -63,8 +60,8 @@ class FetchReviewOperator(BaseOperator):
                     product_review_list += one_page_review
                     
                     page_num += 1
-                logger.info(f"product_review_list : {product_review_list}")
-            time.sleep(0.5)
+
+            # time.sleep(0.5)
         
         logger.info(f"product_review_count : {len(product_review_list)}")
         return product_review_list 
