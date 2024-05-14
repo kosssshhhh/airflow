@@ -8,9 +8,9 @@ class HandsomeVariable(Base):
     variable_id = Column(Integer, primary_key=True, autoincrement=True)
     product_id = Column(String(255), ForeignKey('product.product_id'))
     mall_type = Column(Enum(MallType), ForeignKey('product.mall_type'))
-    product_info = Column(String(255))
-    fitting_info = Column(String(255))
-    additional_info = Column(String(255))
+    product_info = Column(Text)
+    fitting_info = Column(Text)
+    additional_info = Column(Text)
     brand = Column(String(255))
     __table_args__ = (
         ForeignKeyConstraint(

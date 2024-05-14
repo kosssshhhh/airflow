@@ -21,6 +21,10 @@ from handsome.ops.load.products import(
     LoadHandsomeProductIds,
 )
 
+from handsome.ops.load.review import(
+    LoadHandsomeReview
+)
+
 __DEFAULT_ARGS__ = {
     'owner': '400CC',
     'retries': 2,
@@ -46,7 +50,7 @@ with DAG(
     """작업"""
     
     load_images = EmptyOperator(task_id="load.images")
-    load_reviews = EmptyOperator(task_id="load.reviews")
+    load_reviews = LoadHandsomeReview(task_id="load.reviews")
     load_products = LoadHandsomeProductIds(task_id="load.products")
     
     end = EmptyOperator(task_id="end")
