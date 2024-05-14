@@ -16,6 +16,10 @@ from musinsa.ops.images import (
     FetchImageOperator
 )
 
+from musinsa.ops.load_images import (
+    ImageUploadOperator
+)
+
 __DEFAULT_ARGS__ = {
     'owner': '400CC',
     'retries': 2,
@@ -38,9 +42,10 @@ with DAG(
     fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
     fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
     fetch_products_images = FetchImageOperator(task_id='fetch.products.images')
+    load_images = ImageUploadOperator(task_id="load.images")
+    
     """작업"""
     
-    load_images = EmptyOperator(task_id="load.images")
     load_reviews = EmptyOperator(task_id="load.reviews")
     load_products = EmptyOperator(task_id="load.products")
     
