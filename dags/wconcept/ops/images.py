@@ -8,6 +8,9 @@ from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.models.variable import Variable
 from airflow.utils.context import Context
+from wconcept.ops.wconcept_preprocess import WconceptPreprocess
+from core.infra.cache.decorator import MongoResponseCache
+
 from pendulum.datetime import DateTime
 from bs4 import BeautifulSoup
 
@@ -15,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 class FetchImageOperator(BaseOperator):
+    preprocessor = WconceptPreprocess()
     url = 'https://www.wconcept.co.kr/Product/{product_id}?rccode=pc_topseller'
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -32,37 +36,28 @@ class FetchImageOperator(BaseOperator):
         product_image_result = self._gather(xcomData)
         logger.info(f"result : {product_image_result}")
         context["task_instance"].xcom_push(key="product_imageURL", value=product_image_result)
-        
 
     
-    def _fetch(self, url):
-        return self._get(url)
-    
-    def _get(self, url):
+    @MongoResponseCache(type='html', key='wconcept.image', collection='wconcept.response')
+    def _get(self, url, key=None):
         response = requests.get(url, headers=self.headers)
-        return response
+        return response.text
  
     
     def _gather(self, xcomData):
         products_image_dict = {}
         
         for product_id in xcomData:
-            soup = BeautifulSoup(self._fetch(self.url.format(product_id=product_id)).text, 'lxml')
-            logger.info(f"soup : {soup}")
+            url = self.url.format(product_id=product_id)
+            soup = BeautifulSoup(self._get(url=url), 'lxml')
+    
             try:
-                imageUrls = self._parse(soup)
+                imageUrls = self.preprocessor.parse_image(soup)
                 products_image_dict[product_id] = imageUrls
 
             except:
                 products_image_dict[product_id] = []
                 
         return products_image_dict
-        
-    def _parse(self, soup):
-        imageURLs = []
-        images = soup.select('ul#gallery > li > a > img')
-        for image in images:
-            imageURLs.append(image['src'])
-            
-        return imageURLs
+
         

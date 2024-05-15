@@ -36,10 +36,6 @@ class FetchReviewOperator(BaseOperator):
         products_reviews_list = self._gather(xcomData)
         logger.info(f"result : {products_reviews_list}")
         context["task_instance"].xcom_push(key="product_review", value=products_reviews_list)
-        
-
-    # def _fetch(self, url, payload, res_type):
-    #     return self._post(url, payload)
 
 
     @MongoResponseCache(type='json', key='wconcept.review.payload', collection='wconcept.response')

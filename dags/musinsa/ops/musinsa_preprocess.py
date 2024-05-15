@@ -38,12 +38,12 @@ class MusinsaPreprocess:
         return data
 
     def processing_like(self, tasks):
-        return tasks.json()['data']['contents']['items'][0]['count']
+        return tasks['data']['contents']['items'][0]['count']
 
     
     def processing_stat(self, tasks):
         try:
-            cumulative_sales = tasks.json()['data']['purchase']['total']
+            cumulative_sales = tasks['data']['purchase']['total']
         except:
             cumulative_sales = None
             
@@ -83,6 +83,16 @@ class MusinsaPreprocess:
             'male_percentage': male_percentage,
             'female_percentage': female_percentage
         }
+
+    def processing_image(self, tasks):
+        image_urls = []
+        image_urls.append(f'https://image.msscdn.net{tasks['thumbnailImageUrl']}')
+        goodsImages = tasks['goodsImages']
+        
+        for goodsImage in goodsImages:
+            image_urls.append(f'https://image.msscdn.net{goodsImage['imageUrl']}')
+            
+        return image_urls
 
 
     def parse(self, soup):

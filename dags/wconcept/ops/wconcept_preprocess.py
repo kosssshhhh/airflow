@@ -73,6 +73,16 @@ class WconceptPreprocess:
         product_info_list = product_info_list.tolist()
         
         return product_list, product_info_list
+
+
+    def parse_image(self, soup):
+        imageURLs = []
+        images = soup.select('ul#gallery > li > a > img')
+        for image in images:
+            imageURLs.append(f'https:{image['src']}')
+            
+        return imageURLs
+
     
 class WconceptReviewPreprocess:
     def get_option(self, review_info):
