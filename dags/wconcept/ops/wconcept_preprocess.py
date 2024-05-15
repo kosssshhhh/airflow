@@ -79,7 +79,7 @@ class WconceptPreprocess:
         imageURLs = []
         images = soup.select('ul#gallery > li > a > img')
         for image in images:
-            imageURLs.append(image['src'])
+            imageURLs.append(f'https:{image['src']}')
             
         return imageURLs
 

@@ -50,7 +50,7 @@ class FetchImageOperator(BaseOperator):
         for product_id in xcomData:
             url = self.url.format(product_id=product_id)
             soup = BeautifulSoup(self._get(url=url), 'lxml')
-            logger.info(f"soup : {soup}")
+    
             try:
                 imageUrls = self.preprocessor.parse_image(soup)
                 products_image_dict[product_id] = imageUrls

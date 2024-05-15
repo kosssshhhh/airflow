@@ -68,7 +68,7 @@ class HandsomePreprocess:
                     check = goods['colorInfo'][i]['colorContInfo'][j]['imgGbCd']
                     if 'P' in check:
                         colorContInfo = goods['colorInfo'][i]['colorContInfo'][j]['dispGoodsContUrl']
-                        image_urls.append(colorContInfo)
+                        image_urls.append(f'https://cdn-img.thehandsome.com/studio/goods{colorContInfo}')
         except:
             pass
         return image_urls
