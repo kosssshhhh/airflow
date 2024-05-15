@@ -15,36 +15,32 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from airflow.models.baseoperator import BaseOperator
 
-class LoadHandsomeProductIds(BaseOperator):
+class LoadHandsomeProduct(BaseOperator):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.db_url = 'mysql+pymysql://root:12341234@host.docker.internal/designoble_ex'
         self.engine = create_engine(self.db_url, echo=True)
-        self.SessionFactory = sessionmaker(bind=self.engine)  # 팩토리 생성
-        self.mall_type = MallType.HANDSOME  # 고정값으로 설정
-        Base.metadata.create_all(self.engine)  # 모든 테이블 생성
+        self.SessionFactory = sessionmaker(bind=self.engine)
+        self.mall_type = MallType.HANDSOME  
+        Base.metadata.create_all(self.engine) 
 
     def save_product_id(self, product_id_list):
         session = self.SessionFactory()
         try:
-            existing_tuples = set(session.query(Product.product_id, Product.mall_type)
-                                  .filter(Product.mall_type == self.mall_type)
-                                  .all())
-
             new_products = [
-                {'product_id': prod_id, 'mall_type': self.mall_type}
-                for prod_id in product_id_list
-                if (prod_id, self.mall_type) not in existing_tuples
+                {'product_id': product_id, 'mall_type': "HANDSOME"}
+                for product_id in product_id_list
             ]
 
-            # 중복 제거
-            unique_new_products = {tuple(prod.items()) for prod in new_products}
-            unique_new_products = [dict(tup) for tup in unique_new_products]
-
-            if unique_new_products:
-                session.bulk_insert_mappings(Product, unique_new_products)
+            if new_products:
+                insert_ignore_sql = text("""
+                    INSERT IGNORE INTO product 
+                    (product_id, mall_type)
+                    VALUES (:product_id, :mall_type)
+                """)
+                session.execute(insert_ignore_sql, new_products)
                 session.commit()
-                self.log.info(f"Inserted {len(unique_new_products)} new products.")
+                self.log.info(f"Inserted {len(new_products)} new products.")
             else:
                 self.log.info("No new products to insert.")
         except Exception as e:
@@ -52,7 +48,6 @@ class LoadHandsomeProductIds(BaseOperator):
             self.log.error(f"Error occurred: {e}")
         finally:
             session.close()
-
 
     def save_product_variable(self, product_info_list):
         session = self.SessionFactory()
@@ -152,38 +147,50 @@ class LoadHandsomeProductIds(BaseOperator):
         finally:   
             session.close()
             
-    def save_product_category(self, product_list):
+
+    def save_product_category(self, product_info_list):
         session = self.SessionFactory()
         try:
             # category 테이블에서 org_category_id와 category_id 매핑을 가져옵니다.
-            category_mapping = {row.org_category_id: row.category_id for row in session.query(Category.org_category_id, Category.category_id).filter(Category.mall_type == self.mall_type).all()}
-
-            existing_tuples = set(session.query(CategoryProduct.product_id, CategoryProduct.category_id).filter(CategoryProduct.mall_type == self.mall_type).all())
+            category_mapping = {
+                row.org_category_id: row.category_id
+                for row in session.query(Category.org_category_id, Category.category_id)
+                .filter(Category.mall_type == self.mall_type).all()
+            }
 
             category_product = []
-            for product in product_list:
+            for product in product_info_list:
                 org_category_id = product['smallCategory']
                 product_id = product['product_id']
+
+                # org_category_id가 매핑에 있는지 확인
                 if org_category_id in category_mapping:
                     category_id = category_mapping[org_category_id]
-                    if (product_id, category_id) not in existing_tuples:
-                        category_product.append({'product_id': product_id, 'mall_type': self.mall_type, 'category_id': category_id})
+                    category_product.append({
+                        'product_id': product_id,
+                        'mall_type': 'HANDSOME',
+                        'category_id': category_id
+                    })
 
-            unique_new_category_product = {tuple(cat_prod.items()) for cat_prod in category_product}
-            unique_new_category_product = [dict(tup) for tup in unique_new_category_product]
+            if category_product:
+                # SQLAlchemy의 text를 사용하여 직접 SQL 실행
+                insert_ignore_sql = text("""
+                    INSERT IGNORE INTO category_product (product_id, mall_type, category_id)
+                    VALUES (:product_id, :mall_type, :category_id)
+                """)
 
-            if unique_new_category_product:
-                session.bulk_insert_mappings(CategoryProduct, unique_new_category_product)
+                # executemany를 사용하여 일괄 삽입
+                session.execute(insert_ignore_sql, category_product)
                 session.commit()
-                self.log.info(f"Inserted {len(unique_new_category_product)} new categories.")
             else:
                 self.log.info("No new categories to insert.")
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.debug(f"Executed SQL: {insert_ignore_sql}")
+            self.log.debug(f"Parameters: {category_product}")
         finally:
             session.close()
-
         
     def execute(self, context: Context):
         task_instance = context["task_instance"]

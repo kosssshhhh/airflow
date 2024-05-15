@@ -28,20 +28,18 @@ class LoadMusinsaProduct(BaseOperator):
     def save_product(self, product_id_list):
         session = self.SessionFactory()
         try:
-            existing_tuples = set(session.query(Product.product_id, Product.mall_type)
-                                  .filter(Product.mall_type == self.mall_type)
-                                  .all())
-        
-                        # 중복 제거
-            
             new_products = [
-                {'product_id': product_id, 'mall_type': self.mall_type}
+                {'product_id': product_id, 'mall_type': "MUSINSA"}
                 for product_id in product_id_list
-                if (product_id, self.mall_type) not in existing_tuples
             ]
-            
+
             if new_products:
-                session.bulk_insert_mappings(Product, new_products)
+                insert_ignore_sql = text("""
+                    INSERT IGNORE INTO product 
+                    (product_id, mall_type)
+                    VALUES (:product_id, :mall_type)
+                """)
+                session.execute(insert_ignore_sql, new_products)
                 session.commit()
                 self.log.info(f"Inserted {len(new_products)} new products.")
             else:
@@ -150,16 +148,8 @@ class LoadMusinsaProduct(BaseOperator):
                 """)
 
                 # executemany를 사용하여 일괄 삽입
-                result = session.execute(insert_ignore_sql, category_product)
+                session.execute(insert_ignore_sql, category_product)
                 session.commit()
-
-                # 쿼리 실행 결과 확인
-                rows_inserted = result.rowcount
-                self.log.info(f"Inserted {rows_inserted} new categories (duplicates ignored).")
-
-                # 추가 디버깅 로그
-                self.log.debug(f"Executed SQL: {insert_ignore_sql}")
-                self.log.debug(f"Parameters: {category_product}")
             else:
                 self.log.info("No new categories to insert.")
         except Exception as e:

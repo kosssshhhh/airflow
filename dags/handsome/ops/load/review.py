@@ -28,7 +28,7 @@ class LoadHandsomeReview(BaseOperator):
             new_review_product = [{
                 'review_id': review['review_id'],
                 'product_id': review['product_id'],
-                'mall_type': MallType.HANDSOME,
+                'mall_type': 'HANDSOME',
                 'crawled_date': date.today()
             } for review in product_review_list]
             
@@ -48,14 +48,12 @@ class LoadHandsomeReview(BaseOperator):
             session.close()
 
             
-        
     def save_review(self, product_review_list):
         session = self.SessionFactory()
         try:
-            existing_tuples = set(session.query(HandsomeReview.review_id).all())
-            
             new_reviews = [
-                    {'product_id': review['product_id'],
+                {
+                    'product_id': review['product_id'],
                     'review_id': review['review_id'],
                     'rating': review['rating'],
                     'product_color': review['product_sku']['color'],
@@ -65,23 +63,28 @@ class LoadHandsomeReview(BaseOperator):
                     'written_date': datetime.strptime(review['written_date'], '%Y.%m.%d').date(),
                     'user_id': review['user_id'],
                     'user_height': self.parse_height(review['user_height']),
-                    'user_size': review['user_size'],
-                    }
-                    for review in product_review_list
-                    if (review['review_id']) not in existing_tuples
-                ]
+                    'user_size': review['user_size']
+                }
+                for review in product_review_list
+            ]
 
             if new_reviews:
-                    session.bulk_insert_mappings(HandsomeReview, new_reviews)
-                    session.commit()
-                    self.log.info(f"Inserted {len(new_reviews)} new handsomeReview.")
+                insert_ignore_sql = text("""
+                    INSERT IGNORE INTO handsome_review 
+                    (product_id, review_id, rating, product_color, product_size, import_source, body, written_date, user_id, user_height, user_size)
+                    VALUES (:product_id, :review_id, :rating, :product_color, :product_size, :import_source, :body, :written_date, :user_id, :user_height, :user_size)
+                """)
+                session.execute(insert_ignore_sql, new_reviews)
+                session.commit()
+                self.log.info(f"Inserted {len(new_reviews)} new handsome reviews (duplicates ignored).")
             else:
-                    self.log.info("No new products to insert.")
+                self.log.info("No new reviews to insert.")
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
         finally:
             session.close()
+
     
     def parse_height(self, height_str):
         if height_str is None or height_str.lower() == 'cm':

@@ -18,7 +18,7 @@ from handsome.ops.reviews import(
 )
 
 from handsome.ops.load.products import(
-    LoadHandsomeProductIds,
+    LoadHandsomeProduct,
 )
 
 from handsome.ops.load.review import(
@@ -51,7 +51,7 @@ with DAG(
     
     load_images = EmptyOperator(task_id="load.images")
     load_reviews = LoadHandsomeReview(task_id="load.reviews")
-    load_products = LoadHandsomeProductIds(task_id="load.products")
+    load_products = LoadHandsomeProduct(task_id="load.products")
     
     end = EmptyOperator(task_id="end")
     
