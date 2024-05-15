@@ -16,8 +16,8 @@ from musinsa.ops.images import (
     FetchImageOperator
 )
 
-from musinsa.ops.load_images import (
-    ImageUploadOperator
+from musinsa.ops.transform_images import (
+    TransformImageOperator
 )
 
 __DEFAULT_ARGS__ = {
@@ -42,17 +42,18 @@ with DAG(
     fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
     fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
     fetch_products_images = FetchImageOperator(task_id='fetch.products.images')
-    load_images = ImageUploadOperator(task_id="load.images")
+    transform_images = TransformImageOperator(task_id="transform.images")
     
     """작업"""
     
+    load_images =EmptyOperator(task_id="load.images")
     load_reviews = EmptyOperator(task_id="load.reviews")
     load_products = EmptyOperator(task_id="load.products")
     
     end = EmptyOperator(task_id="end")
     
     start >> fetch_products >> fetch_products_info >> load_products >> end
-    start >> fetch_products >> fetch_products_images >> load_images >> end
+    start >> fetch_products >> fetch_products_images >> transform_images >> end
     start >> fetch_products >> fetch_products_reviews >> load_reviews >> end
     
     

@@ -17,6 +17,10 @@ from handsome.ops.reviews import(
     FetchReviewOperator,
 )
 
+from handsome.ops.transform_images import(
+    TransformImageOperator
+)
+
 __DEFAULT_ARGS__ = {
     'owner': '400CC',
     'retries': 2,
@@ -39,17 +43,18 @@ with DAG(
     fetch_products = FetchProductListFromCategoryOperator(task_id='fetch.products')
     fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
     fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
+    transform_images = TransformImageOperator(task_id="transform.images")
     """작업"""
     
-    load_images = EmptyOperator(task_id="load.images")
+    load_images =EmptyOperator(task_id="load.images")
     load_reviews = EmptyOperator(task_id="load.reviews")
     load_products = EmptyOperator(task_id="load.products")
     
     end = EmptyOperator(task_id="end")
     
-    start >> fetch_products >> fetch_products_info >> load_products >> end
-    start >> fetch_products >> load_images >> end
-    start >> fetch_products >> fetch_products_reviews >> load_reviews >> end
+    start >> fetch_products >> fetch_products_info >> load_products >> end # product info
+    start >> fetch_products >> transform_images >> load_images >> end # product image
+    start >> fetch_products >> fetch_products_reviews >> load_reviews >> end # product reviews
     
     
     
