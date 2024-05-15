@@ -84,6 +84,16 @@ class MusinsaPreprocess:
             'female_percentage': female_percentage
         }
 
+    def processing_image(self, tasks):
+        image_urls = []
+        image_urls.append(f'https://image.msscdn.net{tasks['thumbnailImageUrl']}')
+        goodsImages = tasks['goodsImages']
+        
+        for goodsImage in goodsImages:
+            image_urls.append(f'https://image.msscdn.net{goodsImage['imageUrl']}')
+            
+        return image_urls
+
 
     def parse(self, soup):
         try:

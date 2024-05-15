@@ -8,11 +8,14 @@ import re
 from airflow.models.baseoperator import BaseOperator
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
+from core.infra.cache.decorator import MongoResponseCache
+from musinsa.ops.musinsa_preprocess import MusinsaPreprocess
 
 logger = logging.getLogger(__name__)
 
 class FetchImageOperator(BaseOperator):
     URL = 'https://www.musinsa.com/app/goods/{product_id}'
+    preprocessor = MusinsaPreprocess()
     
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
@@ -32,15 +35,10 @@ class FetchImageOperator(BaseOperator):
         
 
     
-    def _fetch(self, url):
-        return self._get(url)
-    
-
-    
-    # TODO: decorator 추가 
-    def _get(self, url):
+    @MongoResponseCache(type='html', key='musinsa.image', collection='musinsa.response')
+    def _get(self, url, key=None):
         response = requests.get(url, headers=self.headers)
-        return response
+        return response.text
     
     
     
@@ -48,14 +46,14 @@ class FetchImageOperator(BaseOperator):
         product_image_dict = {}
         
         for product_id in xcomData: 
-            
-            soup = BeautifulSoup(self._fetch(self.URL.format(product_id=product_id)).text, 'lxml')
-            product_json = self._parse(soup)
+            url = self.URL.format(product_id=product_id)
+            soup = BeautifulSoup(self._get(url=url), 'lxml')
+            product_json = self.preprocessor.parse(soup)
             
             if product_json is None:
                 continue
             
-            product_image = self._processing(product_json)
+            product_image = self.preprocessor.processing_image(product_json)
             
             product_image_dict[product_id] = product_image
             
@@ -66,26 +64,26 @@ class FetchImageOperator(BaseOperator):
     
     
         
-    def _processing(self, tasks):   
-        image_urls = []
-        image_urls.append(f'https://image.msscdn.net{tasks['thumbnailImageUrl']}')
-        goodsImages = tasks['goodsImages']
+    # def _processing(self, tasks):   
+    #     image_urls = []
+    #     image_urls.append(f'https://image.msscdn.net{tasks['thumbnailImageUrl']}')
+    #     goodsImages = tasks['goodsImages']
         
-        for goodsImage in goodsImages:
-            image_urls.append(f'https://image.msscdn.net{goodsImage['imageUrl']}')
+    #     for goodsImage in goodsImages:
+    #         image_urls.append(f'https://image.msscdn.net{goodsImage['imageUrl']}')
             
-        return image_urls
+    #     return image_urls
         
     
-    def _parse(self, soup):
-        try:
-            info = soup.find_all('script', {'type':'text/javascript'})[15]
-        except:
-            return
-        info = info.string
+    # def _parse(self, soup):
+    #     try:
+    #         info = soup.find_all('script', {'type':'text/javascript'})[15]
+    #     except:
+    #         return
+    #     info = info.string
 
-        pattern = re.compile(r'window\.__MSS__\.product\.state = ({.*?});\s*$', re.DOTALL)
-        match = pattern.search(info)
-        info = match.group(1)
+    #     pattern = re.compile(r'window\.__MSS__\.product\.state = ({.*?});\s*$', re.DOTALL)
+    #     match = pattern.search(info)
+    #     info = match.group(1)
         
-        return json.loads(info)
+    #     return json.loads(info)
