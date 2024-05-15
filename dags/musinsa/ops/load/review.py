@@ -12,12 +12,13 @@ from core.infra.database.models.base import Base
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from airflow.models.baseoperator import BaseOperator
-
+from airflow.hooks.base import BaseHook
 
 class LoadMusinsaReview(BaseOperator):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.db_url = 'mysql+pymysql://root:12341234@host.docker.internal/designoble_ex'
+        conn = BaseHook.get_connection('mysql')
+        self.db_url = f"mysql+pymysql://{conn.login}:{conn.password}@{conn.host}:{conn.port}/{conn.schema}"
         self.engine = create_engine(self.db_url, echo=True)
         self.SessionFactory = sessionmaker(bind=self.engine) 
         Base.metadata.create_all(self.engine) 
