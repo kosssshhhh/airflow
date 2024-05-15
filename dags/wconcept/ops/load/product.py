@@ -1,8 +1,6 @@
 from sqlalchemy import create_engine, and_, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
-from core.infra.database.models.product import Product
-from core.infra.database.models.category import CategoryProduct
 from core.infra.database.models.category import Category
 from datetime import date
 import logging

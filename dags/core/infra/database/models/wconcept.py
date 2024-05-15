@@ -26,7 +26,6 @@ class WConceptReview(Base):
     purchase_option = Column(String(255))
     size_info = Column(String(255))
     size = Column(String(255))
-    color = Column(String(255))
     material = Column(String(255))
     user_id = Column(String(255))
     written_date = Column(Date)

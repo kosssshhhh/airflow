@@ -47,7 +47,6 @@ class MusinsaReview(Base):
     review_type = Column(String(255))
     user_info = Column(String(255))
     meta_data = Column(String(255))
-    title = Column(Text)
     body = Column(Text)
     helpful = Column(Integer)
     good_style = Column(Integer)

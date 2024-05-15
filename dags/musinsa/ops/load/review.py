@@ -1,13 +1,8 @@
 from sqlalchemy import create_engine, and_, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
-from core.infra.database.models.review import ReviewProduct
-from datetime import datetime
 from datetime import date
 import json
-import re
-from core.infra.database.enum import MallType
-from core.infra.database.models.musinsa import MusinsaReview
 from core.infra.database.models.base import Base
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
