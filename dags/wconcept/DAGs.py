@@ -5,7 +5,12 @@ import pendulum
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
-
+from wconcept.ops.load.product import (
+    LoadWConceptProduct
+)
+from wconcept.ops.load.review import (
+    LoadWConceptReview
+)
 
 from wconcept.ops.products import (
     FetchProductListFromCategoryOperator,
@@ -51,8 +56,8 @@ with DAG(
     """작업"""
     
     load_images = EmptyOperator(task_id="load.images")
-    load_reviews = EmptyOperator(task_id="load.reviews")
-    load_products = EmptyOperator(task_id="load.products")
+    load_reviews = LoadWConceptReview(task_id="load.reviews")
+    load_products = LoadWConceptProduct(task_id="load.products")
     
     end = EmptyOperator(task_id="end")
     

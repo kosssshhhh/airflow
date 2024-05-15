@@ -2,7 +2,6 @@ class HandsomePreprocess:
     def get_product(self, goods):
         product = {
             'product_id': goods['goodsNo'],
-            'brand': goods['brandNm'],
             'fixed_price': goods['norPrc'],
             'discounted_price': goods['salePrc'],
             'url': self.extract_images(goods),
@@ -21,12 +20,14 @@ class HandsomePreprocess:
         fitting_info_elements = soup.select('p.cmp-font')
         fitting_info_text = fitting_info_elements[0].text if fitting_info_elements else None
 
+        brand = soup.select('ul.prd-category > li > a')[0].text.strip()
         # 상품 정보 구조
         productInfo = {
             'product_id': product_id,
             'product_info': product_info_text,
             'fitting_info': fitting_info_text,
-            'additional_info': self.extract_additional_info(soup)
+            'additional_info': self.extract_additional_info(soup),
+            'brand': brand
         }
 
         return productInfo
