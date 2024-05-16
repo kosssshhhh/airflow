@@ -24,6 +24,7 @@ from handsome.ops.load.products import(
 
 from handsome.ops.load.review import(
     LoadHandsomeReview
+)
 
 from handsome.ops.transform_images import(
     TransformImageOperator
