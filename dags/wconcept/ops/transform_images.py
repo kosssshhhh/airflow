@@ -1,6 +1,6 @@
 import boto3
 import logging
-import os
+import io
 
 from botocore.exceptions import ClientError
 from airflow.models import BaseOperator
@@ -53,9 +53,9 @@ class TransformImageOperator(BaseOperator):
                     # The error signifies that the object does not exist
                     if e.response['Error']['Code'] == "404":
                         logger.info(f"Uploading file: {file_key}")
-                        urllib.request.urlretrieve(url, file_name)
+                        tmp = urllib.request.urlopen(url)
                         self.s3_client.upload_file(
-                            Filename=file_name,
+                            File=io.BytesIO(tmp),
                             Bucket=self.bucket_name,
                             Key=file_key,
                             ExtraArgs=self.extra_args
@@ -63,7 +63,6 @@ class TransformImageOperator(BaseOperator):
                         url = f"https://{self.bucket_name}.s3.ap-northeast-2.amazonaws.com/{file_key}"
                         url_list.append(url)
                         
-                        os.remove(file_name)
                 
             url_dict[key] = url_list
             
