@@ -7,7 +7,12 @@ logger = logging.getLogger(__name__)
 
 class MusinsaPreprocess:
     def get_rank_score(self, ranking, total_items_count):
-        return 1 - (ranking / total_items_count)
+        try:
+            rank_score = 1 - ((ranking - 1) / (total_items_count - 1))
+        except:
+            rank_score = 1
+            
+        return rank_score
 
 
     def get_total_page_counts(self, soup):
