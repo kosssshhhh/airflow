@@ -18,6 +18,7 @@ class ProductRanking(Base):
     mall_type = Column(Enum(MallType), ForeignKey("product.mall_type"))
     rank_score = Column(Float)
     fixed_price = Column(Integer)
+    brand = Column(String(255))
     discounted_price = Column(Integer)
     monetary_unit = Column(String(255))
     crawled_date = Column(Date)

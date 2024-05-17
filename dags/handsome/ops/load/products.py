@@ -19,7 +19,7 @@ from airflow.hooks.base import BaseHook
 class LoadHandsomeProduct(BaseOperator):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        conn = BaseHook.get_connection('mysql')  # 'my_db'는 Airflow UI에 설정한 Connection ID
+        conn = BaseHook.get_connection('mysql') 
         self.db_url = f"mysql+pymysql://{conn.login}:{conn.password}@{conn.host}:{conn.port}/{conn.schema}"
         self.engine = create_engine(self.db_url, echo=True)
         self.SessionFactory = sessionmaker(bind=self.engine)
@@ -59,7 +59,6 @@ class LoadHandsomeProduct(BaseOperator):
             new_variables = [
                 {'product_id': product_variable['product_id'],
                  'mall_type': self.mall_type,
-                 'brand': product_variable['brand'],
                  'product_info': product_variable.get('product_info', ''),
                  'fitting_info': product_variable.get('fitting_info',''), 
                  'additional_info': json.dumps(product_variable.get('additional_info', []), ensure_ascii=False)[1:-1]}
@@ -125,15 +124,16 @@ class LoadHandsomeProduct(BaseOperator):
         finally:
             session.close()
             
-    def save_product_ranking(self, product_list):
+    def save_product_ranking(self, product_info_list):
         session = self.SessionFactory()
         product_ranking = []
         try:
-            for product in product_list:
+            for product in product_info_list:
                 product_ranking.append({'product_id': product['product_id'],
                                         'mall_type': self.mall_type,
                                         'fixed_price': product['fixed_price'],
                                         'rank_score': product['rank_score'],
+                                        'brand': product['brand'],
                                         'discounted_price': product['discounted_price'],
                                         'monetary_unit': 'KRW',
                                         'crawled_date': date.today()})
@@ -175,13 +175,11 @@ class LoadHandsomeProduct(BaseOperator):
                     })
 
             if category_product:
-                # SQLAlchemy의 text를 사용하여 직접 SQL 실행
                 insert_ignore_sql = text("""
                     INSERT IGNORE INTO category_product (product_id, mall_type, category_id)
                     VALUES (:product_id, :mall_type, :category_id)
                 """)
 
-                # executemany를 사용하여 일괄 삽입
                 session.execute(insert_ignore_sql, category_product)
                 session.commit()
             else:
@@ -202,5 +200,5 @@ class LoadHandsomeProduct(BaseOperator):
         self.save_product_id(product_id_list)
         self.save_product_variable(product_info_list)
         self.save_sku_attribute(product_list)
-        self.save_product_ranking(product_list)
+        self.save_product_ranking(product_info_list)
         self.save_product_category(product_list)

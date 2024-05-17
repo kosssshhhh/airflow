@@ -13,7 +13,7 @@ from musinsa.ops.musinsa_preprocess import MusinsaPreprocess
 from core.infra.cache.decorator import MongoResponseCache
 
 logger = logging.getLogger(__name__)
-MAX_COUNT = 1
+MAX_COUNT = 2
 
 # TODO: DB에서 불러오기
 # middle_category_list = ['001006', '001004', '001005', '001010', '001002', '001003',

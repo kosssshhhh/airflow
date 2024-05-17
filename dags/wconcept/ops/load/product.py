@@ -20,9 +20,9 @@ class LoadWConceptProduct(BaseOperator):
         conn = BaseHook.get_connection('mysql')
         self.db_url = f"mysql+pymysql://{conn.login}:{conn.password}@{conn.host}:{conn.port}/{conn.schema}"
         self.engine = create_engine(self.db_url, echo=True)
-        self.SessionFactory = sessionmaker(bind=self.engine)  # 팩토리 생성
-        self.mall_type = MallType.WCONCEPT  # 고정값으로 설정
-        Base.metadata.create_all(self.engine)  # 모든 테이블 생성
+        self.SessionFactory = sessionmaker(bind=self.engine) 
+        self.mall_type = MallType.WCONCEPT
+        Base.metadata.create_all(self.engine) 
 
 
     def save_product(self, product_id_list):
@@ -60,7 +60,7 @@ class LoadWConceptProduct(BaseOperator):
                 {'product_id': product_variable['product_id'],
                  'mall_type': self.mall_type,
                  'product_name': product_variable['product_name'],
-                 'brand': product_variable['brand'],
+                #  'brand': product_variable['brand'],
                  'sold_out': True if product_variable['sold_out'] == '판매중' else False,
                  'likes': product_variable['likes'],
                  }
@@ -91,6 +91,7 @@ class LoadWConceptProduct(BaseOperator):
                                         'mall_type': self.mall_type,
                                         'fixed_price': product['fixed_price'],
                                         'rank_score': product['rank_score'],
+                                        'brand': product['brand'],
                                         'discounted_price': product['discounted_price'],
                                         'monetary_unit': 'KRW',
                                         'crawled_date': date.today()})
@@ -138,23 +139,13 @@ class LoadWConceptProduct(BaseOperator):
                     })
 
             if category_product:
-                # SQLAlchemy의 text를 사용하여 직접 SQL 실행
                 insert_ignore_sql = text("""
                     INSERT IGNORE INTO category_product (product_id, mall_type, category_id)
                     VALUES (:product_id, :mall_type, :category_id)
                 """)
 
-                # executemany를 사용하여 일괄 삽입
                 result = session.execute(insert_ignore_sql, category_product)
                 session.commit()
-
-                # 쿼리 실행 결과 확인
-                rows_inserted = result.rowcount
-                self.log.info(f"Inserted {rows_inserted} new categories (duplicates ignored).")
-
-                # 추가 디버깅 로그
-                self.log.debug(f"Executed SQL: {insert_ignore_sql}")
-                self.log.debug(f"Parameters: {category_product}")
             else:
                 self.log.info("No new categories to insert.")
         except Exception as e:

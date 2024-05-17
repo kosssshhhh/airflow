@@ -23,9 +23,9 @@ class LoadMusinsaProduct(BaseOperator):
         conn = BaseHook.get_connection('mysql')
         self.db_url = f"mysql+pymysql://{conn.login}:{conn.password}@{conn.host}:{conn.port}/{conn.schema}"
         self.engine = create_engine(self.db_url, echo=True)
-        self.SessionFactory = sessionmaker(bind=self.engine)  # 팩토리 생성
-        self.mall_type = MallType.MUSINSA  # 고정값으로 설정
-        Base.metadata.create_all(self.engine)  # 모든 테이블 생성
+        self.SessionFactory = sessionmaker(bind=self.engine)
+        self.mall_type = MallType.MUSINSA
+        Base.metadata.create_all(self.engine)
 
     def save_product(self, product_id_list):
         session = self.SessionFactory()
@@ -61,7 +61,7 @@ class LoadMusinsaProduct(BaseOperator):
                 {'product_id': product_variable['product_id'],
                  'mall_type': self.mall_type,
                  'product_num': product_variable['product_num'],
-                 'brand': product_variable['brand'],
+                #  'brand': product_variable['brand'],
                  'male_percentage': product_variable['male_percentage'],
                  'female_percentage': product_variable['female_percentage'],
                  'likes': product_variable['like'],
@@ -101,6 +101,7 @@ class LoadMusinsaProduct(BaseOperator):
                                         'mall_type': self.mall_type,
                                         'fixed_price': product['fixed_price'],
                                         'rank_score': product['rank_score'],
+                                        'brand': product['brand'],
                                         'discounted_price': product['discounted_price'],
                                         'monetary_unit': 'KRW',
                                         'crawled_date': date.today()})
