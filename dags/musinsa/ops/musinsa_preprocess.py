@@ -7,10 +7,10 @@ logger = logging.getLogger(__name__)
 
 class MusinsaPreprocess:
     def get_rank_score(self, ranking, total_items_count):
-        try:
-            rank_score = 1 - ((ranking - 1) / (total_items_count - 1))
-        except:
+        if total_items_count <= 1:
             rank_score = 1
+        else:
+            rank_score = 1 - ((ranking - 1) / (total_items_count - 1))
             
         return rank_score
 
@@ -53,7 +53,7 @@ class MusinsaPreprocess:
             cumulative_sales = None
             
         try:
-            ages = tasks.json()['data']['purchase']['rates']
+            ages = tasks['data']['purchase']['rates']
             ages = {key: f"{value}%" for key, value in ages.items()}
             under_18 = f"{ages['AGE_UNDER_18']}%"
             age_19_to_23 = f"{ages['AGE_19_TO_23']}%"
@@ -66,8 +66,8 @@ class MusinsaPreprocess:
 
         # 성비
         try:
-            male = int(tasks.json()['data']['purchase']['male'])
-            female = int(tasks.json()['data']['purchase']['female'])
+            male = int(tasks['data']['purchase']['male'])
+            female = int(tasks['data']['purchase']['female'])
             total_count = male + female
             male_percentage = int(round((male / total_count) * 100, -1))
             female_percentage = int(round((female / total_count) * 100, -1))
