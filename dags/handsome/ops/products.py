@@ -48,7 +48,6 @@ class FetchProductListFromCategoryOperator(BaseOperator):
             
 
         logger.info("pids: ",pids)
-        logger.info("product_image_urls: ", product_image_urls)
             
         context["task_instance"].xcom_push(key="product_id_list", value=pids)
         context["task_instance"].xcom_push(key="product_list", value=product_list)
@@ -86,6 +85,9 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         
         return product_list
          
+         
+         
+         
 
 # 두번째
 class FetchProductOperator(BaseOperator):
@@ -101,6 +103,7 @@ class FetchProductOperator(BaseOperator):
     ):
         task_instance: TaskInstance = context["task_instance"]
         xcomData = task_instance.xcom_pull(task_ids="fetch.products", key="product_list")
+
         logger.info(f"xcomData : {xcomData}")
         
         product_info_result = self._gather(xcomData)
@@ -125,9 +128,31 @@ class FetchProductOperator(BaseOperator):
         tasks = []
 
         for product in xcomData:
+            fixed_price = product['fixed_price']
+            discounted_price = product['discounted_price']
+            colors = product['colors']
+            sizes = product['sizes']
+            review_count = product['review_count']
+            rank_score = product['rank_score']
+            smallCategory = product['smallCategory']
+            
             url = self.url.format(product_id = product['product_id'])
-            # tasks.append(self._parse(self._fetch(url), product['product_id']))
-            tasks.append(self.preprocessor.get_product_info(self._fetch(url), product['product_id']))
+            product_info = self.preprocessor.get_product_info(self._fetch(url), product['product_id'])
+            
+            combined_info = {
+            "fixed_price": fixed_price,
+            "discounted_price": discounted_price,
+            "colors": colors,
+            "sizes": sizes,
+            "review_count": review_count,
+            "rank_score": rank_score,
+            "smallCategory": smallCategory
+            }
+            
+            combined_info.update(product_info)
+            
+            tasks.append(combined_info)
+
         return tasks
     
     
