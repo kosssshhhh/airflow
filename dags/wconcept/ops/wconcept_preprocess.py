@@ -40,10 +40,10 @@ class WconceptPreprocess:
 
 
     def get_rank_score(self, ranking, total_items_count):
-        try:
-            rank_score = 1 - ((ranking - 1) / (total_items_count - 1))
-        except:
+        if total_items_count <= 1:
             rank_score = 1
+        else:
+            rank_score = 1 - ((ranking - 1) / (total_items_count - 1))
             
         return rank_score
     

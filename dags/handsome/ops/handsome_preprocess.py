@@ -103,13 +103,15 @@ class HandsomePreprocess:
             additional_info_processed = None
         return additional_info_processed
 
-    def get_rank_score(self, ranking, item_count):
-        try:
-            rank_score = 1 - ((ranking - 1) / (item_count - 1))
-        except:
+
+    def get_rank_score(self, ranking, total_items_count):
+        if total_items_count <= 1:
             rank_score = 1
+        else:
+            rank_score = 1 - ((ranking - 1) / (total_items_count - 1))
             
         return rank_score
+
     
     def get_payload(self, max_item_counts, middle_category, gender):
         gender_type = self.discriminate_gender_type(gender)
