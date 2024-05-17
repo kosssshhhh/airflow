@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 class MusinsaPreprocess:
     def get_rank_score(self, ranking, total_items_count):
-        if total_items_count <= 1:
+        if len(total_items_count) <= 1:
             rank_score = 1
         else:
             rank_score = 1 - ((ranking - 1) / (total_items_count - 1))
@@ -55,12 +55,12 @@ class MusinsaPreprocess:
         try:
             ages = tasks['data']['purchase']['rates']
             ages = {key: f"{value}%" for key, value in ages.items()}
-            under_18 = f"{ages['AGE_UNDER_18']}%"
-            age_19_to_23 = f"{ages['AGE_19_TO_23']}%"
-            age_24_to_28 = f"{ages['AGE_24_TO_28']}%"
-            age_29_to_33 = f"{ages['AGE_29_TO_33']}%"
-            age_34_to_39 = f"{ages['AGE_34_TO_39']}%"
-            over_40 = f"{ages['AGE_OVER_40']}%"
+            under_18 = f"{ages['AGE_UNDER_18']}"
+            age_19_to_23 = f"{ages['AGE_19_TO_23']}"
+            age_24_to_28 = f"{ages['AGE_24_TO_28']}"
+            age_29_to_33 = f"{ages['AGE_29_TO_33']}"
+            age_34_to_39 = f"{ages['AGE_34_TO_39']}"
+            over_40 = f"{ages['AGE_OVER_40']}"
         except:
             under_18, age_19_to_23, age_24_to_28, age_29_to_33, age_34_to_39, over_40 = None, None, None, None, None, None
 

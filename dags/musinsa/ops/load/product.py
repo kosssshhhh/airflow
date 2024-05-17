@@ -52,6 +52,12 @@ class LoadMusinsaProduct(BaseOperator):
         finally:
             session.close()
             
+    def replace_percentage(self, value):
+        if value is None:
+            return None
+        return value.replace('%', '')
+
+# 각 age group의 값을 처리
     def save_product_variable(self, product_info_list):
         session = self.SessionFactory()
         try:
@@ -61,17 +67,16 @@ class LoadMusinsaProduct(BaseOperator):
                 {'product_id': product_variable['product_id'],
                  'mall_type': self.mall_type,
                  'product_num': product_variable['product_num'],
-                #  'brand': product_variable['brand'],
                  'male_percentage': product_variable['male_percentage'],
                  'female_percentage': product_variable['female_percentage'],
                  'likes': product_variable['like'],
                  'cumulative_sales': product_variable['cumulative_sales'],
-                 'age_under_18': product_variable['under_18'].replace('%%', ''),
-                 'age_19_to_23': product_variable['age_19_to_23'].replace('%%', ''),
-                 'age_24_to_28': product_variable['age_24_to_28'].replace('%%', ''),
-                 'age_29_to_33': product_variable['age_29_to_33'].replace('%%', ''),
-                 'age_34_to_39': product_variable['age_34_to_39'].replace('%%', ''),
-                 'age_over_40': product_variable['over_40'].replace('%%', ''),
+                 'age_under_18' : self.replace_percentage(product_variable.get('under_18')),
+                 'age_19_to_23' : self.replace_percentage(product_variable.get('age_19_to_23')),
+                 'age_24_to_28' : self.replace_percentage(product_variable.get('age_24_to_28')),
+                 'age_29_to_33' : self.replace_percentage(product_variable.get('age_29_to_33')),
+                 'age_34_to_39' : self.replace_percentage(product_variable.get('age_34_to_39')),
+                 'age_over_40' : self.replace_percentage(product_variable.get('over_40'))
                  }
                 for product_variable in product_info_list
                 if(product_variable['product_id']) not in existing_tuples
