@@ -26,6 +26,10 @@ from handsome.ops.load.review import(
     LoadHandsomeReview
 )
 
+from handsome.ops.load.image import(
+    LoadHandsomeImage
+)
+
 from handsome.ops.transform_images import(
     TransformImageOperator
 )
@@ -56,7 +60,7 @@ with DAG(
     """작업"""
     
 
-    load_images = EmptyOperator(task_id="load.images")
+    load_images = LoadHandsomeImage(task_id="load.images")
     load_reviews = LoadHandsomeReview(task_id="load.reviews")
     load_products = LoadHandsomeProduct(task_id="load.products")
 
