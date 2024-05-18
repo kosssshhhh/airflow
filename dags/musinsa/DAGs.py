@@ -26,6 +26,9 @@ from musinsa.ops.transform_images import (
     TransformImageOperator
 )
 
+from musinsa.ops.load.image import (
+    LoadMusinsaImage
+)
 __DEFAULT_ARGS__ = {
     'owner': '400CC',
     'retries': 2,
@@ -53,7 +56,7 @@ with DAG(
     """작업"""
     
 
-    load_images = EmptyOperator(task_id="load.images")
+    load_images = LoadMusinsaImage(task_id="load.images")
     load_reviews = LoadMusinsaReview(task_id="load.reviews")
     load_products = LoadMusinsaProduct(task_id="load.products")
 
@@ -61,7 +64,7 @@ with DAG(
     end = EmptyOperator(task_id="end")
     
     start >> fetch_products >> fetch_products_info >> load_products >> end
-    start >> fetch_products >> fetch_products_images >> transform_images >> end
+    start >> fetch_products >> fetch_products_images >> transform_images >> load_images >> end
     start >> fetch_products >> fetch_products_reviews >> load_reviews >> end
     
     
