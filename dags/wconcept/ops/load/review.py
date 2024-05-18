@@ -16,7 +16,6 @@ class LoadWConceptReview(BaseOperator):
         self.db_url = f"mysql+pymysql://{conn.login}:{conn.password}@{conn.host}:{conn.port}/{conn.schema}"
         self.engine = create_engine(self.db_url, echo=True)
         self.SessionFactory = sessionmaker(bind=self.engine) 
-        Base.metadata.create_all(self.engine) 
 
     def save_review_product(self, product_review_list):
         session = self.SessionFactory()
@@ -29,7 +28,6 @@ class LoadWConceptReview(BaseOperator):
                 'crawled_date': date.today()
             } for review in product_review_list]
             
-            # RINSERT IGNORE 구현
             insert_stmt = text("""
                 INSERT IGNORE INTO review_product (review_id, product_id, mall_type, crawled_date)
                 VALUES (:review_id, :product_id, :mall_type, :crawled_date)

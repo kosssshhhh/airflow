@@ -22,7 +22,6 @@ class LoadWConceptProduct(BaseOperator):
         self.engine = create_engine(self.db_url, echo=True)
         self.SessionFactory = sessionmaker(bind=self.engine) 
         self.mall_type = MallType.WCONCEPT
-        Base.metadata.create_all(self.engine) 
 
 
     def save_product(self, product_id_list):

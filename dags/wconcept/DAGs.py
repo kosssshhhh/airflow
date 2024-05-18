@@ -27,7 +27,10 @@ from wconcept.ops.images import (
 
 from wconcept.ops.transform_images import(
     TransformImageOperator
+)
 
+from wconcept.ops.load.image import (
+    LoadWConceptImage
 )
 
 __DEFAULT_ARGS__ = {
@@ -55,7 +58,7 @@ with DAG(
     transform_images = TransformImageOperator(task_id="transform.images")
     """작업"""
     
-    load_images = EmptyOperator(task_id="load.images")
+    load_images = LoadWConceptImage(task_id="load.images")
     load_reviews = LoadWConceptReview(task_id="load.reviews")
     load_products = LoadWConceptProduct(task_id="load.products")
     
