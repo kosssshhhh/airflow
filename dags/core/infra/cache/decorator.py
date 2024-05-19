@@ -38,7 +38,15 @@ class MongoResponseCache:
                 return cached_result[self.type]
             value = func(*args, **kwargs)
             search_key[self.type] = value
-            search_key["created_at"] = pendulum.now("UTC")
+
+            today = pendulum.now("UTC").date()
+            search_key["created_at"] = {
+                "year": today.year,
+                "month": today.month,
+                "day": today.day
+            }
+
+            search_key["created_at"] = today.to_date_string()
             self.collection.insert_one(search_key)
             return value
 
