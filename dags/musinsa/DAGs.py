@@ -51,7 +51,10 @@ with DAG(
     fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
     fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
     fetch_products_images = FetchImageOperator(task_id='fetch.products.images')
-    transform_images = TransformImageOperator(task_id="transform.images")
+    transform_images = TransformImageOperator(
+        task_id="transform.images",
+        site_name="musinsa"
+    )
     
     """작업"""
     
