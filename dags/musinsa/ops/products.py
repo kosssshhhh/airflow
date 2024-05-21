@@ -11,27 +11,30 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from musinsa.ops.musinsa_preprocess import MusinsaPreprocess
 from core.infra.cache.decorator import MongoResponseCache
+from airflow.models.variable import Variable
 
 logger = logging.getLogger(__name__)
-MAX_COUNT = 2
+MAX_COUNT = 1
 
 # TODO: DB에서 불러오기
-# middle_category_list = ['001006', '001004', '001005', '001010', '001002', '001003',
-#                         '001001', '001011', '001013', '001008', '002022', '002001',
-#                         '002002', '002025', '002017', '002003', '002020', '002019',
-#                         '002023', '002018', '002004', '002008', '002007', '002024',
-#                         '002009', '002013', '002012', '002016', '002021', '002014',
-#                         '002006', '002015', '003002', '003007', '003008', '003004',
-#                         '003009', '003005', '003010', '003011', '003006', '002006',
-#                         '002007', '002008', '022001', '022002', '022003']
+# middle_category_list = ["001006", "001004", "001005", "001010", "001002", "001003",
+#                         "001001", "001011", "001013", "001008", "002022", "002001",
+#                         "002002", "002025", "002017", "002003", "002020", "002019",
+#                         "002023", "002018", "002004", "002008", "002007", "002024",
+#                         "002009", "002013", "002012", "002016", "002021", "002014",
+#                         "002006", "002015", "003002", "003007", "003008", "003004",
+#                         "003009", "003005", "003010", "003011", "003006", "002006",
+#                         "002007", "002008", "022001", "022002", "022003"]
 
-middle_category_list = ['001006', '001004']
+# middle_category_list = ["001006", "001004"]
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
     preprocessor = MusinsaPreprocess()
     url = 'https://www.musinsa.com/categories/item/{category_number}?d_cat_cd={category_number}&brand=&list_kind=small&sort=sale_high&sub_sort=1d&page={page}&display_cnt=90&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&plusDeliveryYn=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure='
     max_item_counts: int = MAX_COUNT
-    middle_category_list = middle_category_list
+    # middle_category_list = middle_category_list
+    middle_category_list = Variable.get('musinsa_category_nums')
+    middle_category_list = json.loads(middle_category_list)
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
     }
@@ -40,7 +43,7 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         self,
         context: Context,
     ):
-        # items = asyncio.
+
         total_product_list = self._gather()
         total_product_id_list = [item[0] for item in total_product_list]
         

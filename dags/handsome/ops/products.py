@@ -2,6 +2,7 @@
 import logging
 import requests
 from bs4 import BeautifulSoup
+import json
 
 # import httpx
 from airflow.models.baseoperator import BaseOperator
@@ -10,6 +11,7 @@ from airflow.utils.context import Context
 
 from core.infra.cache.decorator import MongoResponseCache
 from handsome.ops.handsome_preprocess import HandsomePreprocess
+from airflow.models.variable import Variable
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +22,12 @@ class FetchProductListFromCategoryOperator(BaseOperator):
     url = 'https://www.thehandsome.com/api/display/1/ko/category/categoryGoodsList?dispMediaCd=10&sortGbn=20&pageSize={ITEMS_COUNT}&pageNo=1&norOutletGbCd=J&dispCtgNo={small_category_num}&productListLayout=4&theditedYn=N'
     
     max_item_counts: int = 1
-    # client = requests
     
-    categories_list = ['388','461','5008','2078','503','513','972','5001','971','970','5002','2082','2081','984','983','5007','988','987','986','5006','5003','5004','5005','990','8452','14784','14166','13492','12310','11472','14000','11648','12132','12758','13524','14156','8578','14584','12468','11880','14176','11586','11212','667','1013','5013','1009','1011','1010','5014','1016','5010','1015','5011','2093','2092','1019','1007','1006','5012','1008','5015','5016','12048','12142','8368','10164','8746']
+    # categories_list = [388,461,5008,2078,503,513,972,5001,971,970,5002,2082,2081,984,983,5007,988,987,986,5006,5003,5004,5005,990,8452,14784,14166,13492,12310,11472,14000,11648,12132,12758,13524,14156,8578,14584,12468,11880,14176,11586,11212,667,1013,5013,1009,1011,1010,5014,1016,5010,1015,5011,2093,2092,1019,1007,1006,5012,1008,5015,5016,12048,12142,8368,10164,8746]
+    # Variable.set('handsome_category_nums', json.dumps(categories_list))
+    
+    categories_list = Variable.get('handsome_category_nums')
+    categories_list = json.loads(categories_list)
     
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -32,6 +37,9 @@ class FetchProductListFromCategoryOperator(BaseOperator):
         self,
         context: Context,
     ):
+        logger.info('categories_list: ', self.categories_list)
+        logger.info('len: ', len(self.categories_list))
+
         # items = asyncio.
         product_list = self._gather()
         logger.info("product_list : ", product_list)
