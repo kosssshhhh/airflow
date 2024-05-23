@@ -22,7 +22,7 @@ class ImageUploader:
             url_list = []
             
             for i, url in enumerate(xcomData[key]):
-                file_key = f"/image/{self.folder_name}/{key}/{i}.webp"
+                file_key = f"image/{self.folder_name}/{key}/{i}.webp"
                 
                 try:
                     self.s3_client.head_object(Bucket=self.bucket_name, Key=file_key)
