@@ -22,15 +22,15 @@ class LoadWConceptReview(BaseOperator):
         try:
 
             new_review_product = [{
-                'review_id': review['review_id'],
+                'org_review_id': review['review_id'],
                 'product_id': review['product_id'],
                 'mall_type': "WCONCEPT",
                 'crawled_date': date.today()
             } for review in product_review_list]
             
             insert_stmt = text("""
-                INSERT IGNORE INTO review_product (review_id, product_id, mall_type, crawled_date)
-                VALUES (:review_id, :product_id, :mall_type, :crawled_date)
+                INSERT IGNORE INTO review_product (org_review_id, product_id, mall_type, crawled_date)
+                VALUES (:org_review_id, :product_id, :mall_type, :crawled_date)
             """)
             
             session.execute(insert_stmt, new_review_product)
@@ -51,7 +51,7 @@ class LoadWConceptReview(BaseOperator):
             new_reviews = [
                 {
                     'product_id': review['product_id'],
-                    'review_id': review['review_id'],
+                    'org_review_id': review['review_id'],
                     'rate': review['rate'],
                     'size_info': review['size_info'],
                     'purchase_option': review['purchase_option'],
@@ -68,8 +68,8 @@ class LoadWConceptReview(BaseOperator):
             if new_reviews:
                 insert_ignore_sql = text("""
                     INSERT IGNORE INTO wconcept_review 
-                    (product_id, review_id, rate, size_info, purchase_option, size, material, user_id, written_date, body, likes)
-                    VALUES (:product_id, :review_id, :rate, :size_info, :purchase_option, :size, :material, :user_id, :written_date, :body, :likes)
+                    (product_id, org_review_id, rate, size_info, purchase_option, size, material, user_id, written_date, body, likes)
+                    VALUES (:product_id, :org_review_id, :rate, :size_info, :purchase_option, :size, :material, :user_id, :written_date, :body, :likes)
                 """)
                 for review in new_reviews:
                     session.execute(insert_ignore_sql, review)

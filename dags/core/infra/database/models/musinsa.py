@@ -1,3 +1,4 @@
+from airflow.dags.core.infra.database.models.review import ReviewProduct
 from sqlalchemy import (
     Enum,
     Text,
@@ -40,8 +41,9 @@ class MusinsaVariable(Base):
 
 class MusinsaReview(Base):
     __tablename__ = "musinsa_review"
-    review_id = Column(String(255), ForeignKey('review.review_id'),primary_key=True)
-    product_id = Column(String(255), ForeignKey("review.product_id"), primary_key=True)
+    review_id = Column(Integer, ForeignKey('ReviewProduct.review_id') ,primary_key=True)
+    org_review_id = Column(String(255), unique=True)
+    product_id = Column(String(255))
     rate = Column(Integer)
     review_type = Column(String(255))
     user_info = Column(String(255))
@@ -50,9 +52,5 @@ class MusinsaReview(Base):
     helpful = Column(Integer)
     good_style = Column(Integer)
     __table_args__ = (
-        ForeignKeyConstraint(
-            ["review_id", "product_id"],
-            ["review_product.review_id", "review_product.product_id"],
-        ),
         {"extend_existing": True},
     )

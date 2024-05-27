@@ -85,8 +85,15 @@ class LoadWConceptProduct(BaseOperator):
         session = self.SessionFactory()
         product_ranking = []
         try:
+            category_mapping = {
+                row.name: row.category_id
+                for row in session.query(Category.category_id, Category.name)
+                .filter(Category.mall_type == self.mall_type).all()
+            }
+            
             for product in product_info_list:
                 product_ranking.append({'product_id': product['product_id'],
+                                        'category_id':category_mapping[product['category_per_depth'][0]['category_depthname3']],
                                         'mall_type': self.mall_type,
                                         'fixed_price': product['fixed_price'],
                                         'rank_score': product['rank_score'],

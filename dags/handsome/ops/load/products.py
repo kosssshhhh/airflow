@@ -127,9 +127,17 @@ class LoadHandsomeProduct(BaseOperator):
         session = self.SessionFactory()
         product_ranking = []
         try:
+                        # category 테이블에서 org_category_id와 category_id 매핑을 가져옵니다.
+            category_mapping = {
+                row.org_category_id: row.category_id
+                for row in session.query(Category.org_category_id, Category.category_id)
+                .filter(Category.mall_type == self.mall_type).all()
+            }
+            
             for product in product_info_list:
                 product_ranking.append({'product_id': product['product_id'],
                                         'mall_type': self.mall_type,
+                                        'category_id': category_mapping[product['smallCategory']],
                                         'fixed_price': product['fixed_price'],
                                         'rank_score': product['rank_score'],
                                         'brand': product['brand'],
@@ -197,7 +205,7 @@ class LoadHandsomeProduct(BaseOperator):
         product_list = task_instance.xcom_pull(task_ids="fetch.products", key="product_list")
         product_info_list = task_instance.xcom_pull(task_ids="fetch.products.info", key="product_info")
         self.save_product_id(product_id_list)
+        self.save_product_category(product_list)
         self.save_product_variable(product_info_list)
         self.save_sku_attribute(product_list)
         self.save_product_ranking(product_info_list)
-        self.save_product_category(product_list)

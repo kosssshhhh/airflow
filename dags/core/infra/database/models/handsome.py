@@ -21,8 +21,9 @@ class HandsomeVariable(Base):
 
 class HandsomeReview(Base):
     __tablename__ = "handsome_review"
-    review_id = Column(String(255), ForeignKey('review_product.review_id'), primary_key= True)
-    product_id = Column(String(255), ForeignKey('review_product.product_id'), primary_key= True)
+    review_id = Column(Integer, ForeignKey('ReviewProduct.review_id') ,primary_key=True)
+    org_review_id = Column(String(255), unique=True)
+    product_id = Column(String(255))
     rating = Column(Integer)
     written_date = Column(Date)
     user_id = Column(String(255))
@@ -33,9 +34,5 @@ class HandsomeReview(Base):
     user_height = Column(Integer)
     user_size = Column(Integer)
     __table_args__ = (
-        ForeignKeyConstraint(
-            ['review_id', 'product_id'],
-            ['review_product.review_id', 'review_product.product_id']
-        ),
         {"extend_existing": True}
     )

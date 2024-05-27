@@ -32,9 +32,7 @@ class CategoryClosure(Base):
 class CategoryProduct(Base):
     __tablename__ = "category_product"
     __table_args__ = {"extend_existing": True}
-    category_id = Column(
-        Integer, ForeignKey("category.category_id"), primary_key=True
-    )
+    category_id = Column(Integer, ForeignKey("category.category_id"), primary_key=True)
     product_id = Column(String(255), ForeignKey("product.product_id"), primary_key=True)
     mall_type = Column(Enum(MallType), ForeignKey("product.mall_type"), primary_key=True)
     __table_args__ = (
@@ -44,3 +42,4 @@ class CategoryProduct(Base):
         ),
         {'extend_existing': True}
     )
+    

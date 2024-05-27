@@ -20,8 +20,9 @@ class WConceptVariable(Base):
 
 class WConceptReview(Base):
     __tablename__ = "wconcept_review"
-    review_id = Column(String, primary_key=True)
-    product_id = Column(String(255), ForeignKey('product.product_id'), primary_key=True)
+    review_id = Column(Integer, ForeignKey('ReviewProduct.review_id') ,primary_key=True)
+    org_review_id = Column(String(255), unique=True)
+    product_id = Column(String(255))
     purchase_option = Column(String(255))
     size_info = Column(String(255))
     size = Column(String(255))
@@ -32,9 +33,5 @@ class WConceptReview(Base):
     rate = Column(Integer)
     likes = Column(Integer)
     __table_args__ = (
-        ForeignKeyConstraint(
-            ['review_id', 'product_id'],
-            ['review_product.review_id', 'review_product.product_id']
-        ),
         {"extend_existing": True}
     )

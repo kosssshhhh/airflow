@@ -14,8 +14,9 @@ class Product(Base):
 class ProductRanking(Base):
     __tablename__ = "product_ranking"
     rank_id = Column(Integer, autoincrement=True, primary_key=True)
-    product_id = Column(String(255), ForeignKey("product.product_id"))
-    mall_type = Column(Enum(MallType), ForeignKey("product.mall_type"))
+    category_id = Column(Integer, ForeignKey("category_product.category_id"))
+    product_id = Column(String(255), ForeignKey("category_product.product_id"))
+    mall_type = Column(Enum(MallType), ForeignKey("category_product.mall_type"))
     rank_score = Column(Float)
     fixed_price = Column(Integer)
     brand = Column(String(255))
@@ -24,7 +25,8 @@ class ProductRanking(Base):
     crawled_date = Column(Date)
     __table_args__ = (
         ForeignKeyConstraint(
-            ["product_id", "mall_type"], ["product.product_id", "product.mall_type"]
+            ['product_id', 'category_id', 'mall_type'],
+            ['category_product.product_id', 'category_product.category_id', 'category_product.mall_type']
         ),
         {"extend_existing": True}
     )

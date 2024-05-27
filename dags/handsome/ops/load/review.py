@@ -27,7 +27,7 @@ class LoadHandsomeReview(BaseOperator):
         try:
 
             new_review_product = [{
-                'review_id': review['review_id'],
+                'org_review_id': review['review_id'],
                 'product_id': review['product_id'],
                 'mall_type': 'HANDSOME',
                 'crawled_date': date.today()
@@ -35,8 +35,8 @@ class LoadHandsomeReview(BaseOperator):
             
             # RINSERT IGNORE 구현
             insert_stmt = text("""
-                INSERT IGNORE INTO review_product (review_id, product_id, mall_type, crawled_date)
-                VALUES (:review_id, :product_id, :mall_type, :crawled_date)
+                INSERT IGNORE INTO review_product (org_review_id, product_id, mall_type, crawled_date)
+                VALUES (:org_review_id, :product_id, :mall_type, :crawled_date)
             """)
             
             session.execute(insert_stmt, new_review_product)
@@ -55,7 +55,7 @@ class LoadHandsomeReview(BaseOperator):
             new_reviews = [
                 {
                     'product_id': review['product_id'],
-                    'review_id': review['review_id'],
+                    'org_review_id': review['review_id'],
                     'rating': review['rating'],
                     'product_color': review['product_sku']['color'],
                     'product_size': review['product_sku']['size'],
@@ -72,8 +72,8 @@ class LoadHandsomeReview(BaseOperator):
             if new_reviews:
                 insert_ignore_sql = text("""
                     INSERT IGNORE INTO handsome_review 
-                    (product_id, review_id, rating, product_color, product_size, import_source, body, written_date, user_id, user_height, user_size)
-                    VALUES (:product_id, :review_id, :rating, :product_color, :product_size, :import_source, :body, :written_date, :user_id, :user_height, :user_size)
+                    (product_id, org_review_id, rating, product_color, product_size, import_source, body, written_date, user_id, user_height, user_size)
+                    VALUES (:product_id, :org_review_id, :rating, :product_color, :product_size, :import_source, :body, :written_date, :user_id, :user_height, :user_size)
                 """)
                 session.execute(insert_ignore_sql, new_reviews)
                 session.commit()

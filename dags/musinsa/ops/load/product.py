@@ -1,3 +1,4 @@
+from unicodedata import category
 from sqlalchemy import create_engine, and_, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
@@ -100,8 +101,15 @@ class LoadMusinsaProduct(BaseOperator):
         session = self.SessionFactory()
         product_ranking = []
         try:
+            category_mapping = {
+                row.org_category_id: row.category_id
+                for row in session.query(Category.org_category_id, Category.category_id)
+                .filter(Category.mall_type == self.mall_type).all()
+            }
+            
             for product in product_info_list:
                 product_ranking.append({'product_id': product['product_id'],
+                                        'category_id': category_mapping[product['middle_category']],
                                         'mall_type': self.mall_type,
                                         'fixed_price': product['fixed_price'],
                                         'rank_score': product['rank_score'],
