@@ -2,6 +2,7 @@ import logging
 import requests
 import numpy as np
 from bs4 import BeautifulSoup
+import json
 
 # import httpx
 from airflow.exceptions import AirflowSkipException
@@ -12,20 +13,23 @@ from airflow.utils.context import Context
 from pendulum.datetime import DateTime
 from wconcept.ops.wconcept_preprocess import WconceptPreprocess
 from core.infra.cache.decorator import MongoResponseCache
+from airflow.models.variable import Variable
 
 logger = logging.getLogger(__name__)
 MAX_COUNT = 1
 
 # TODO: DB에서 불러오기
-middle_category_list = ['10101201', '10101202', '10101203', '10101204', '10101205',
-                        '10101206', '10101207', '10101208', '10101209', '10101210',
-                        '10101211', '10101212']
+# middle_category_list = ['10101201', '10101202', '10101203', '10101204', '10101205',
+#                         '10101206', '10101207', '10101208', '10101209', '10101210',
+#                         '10101211', '10101212']
 
 class FetchProductListFromCategoryOperator(BaseOperator): 
     preprocessor = WconceptPreprocess()
     url = 'https://api-display.wconcept.co.kr/display/api/v2/best/products'
     max_item_counts: int = MAX_COUNT
-    middle_category_list = middle_category_list
+    # middle_category_list = middle_category_list
+    middle_category_list = Variable.get('wconcept_category_nums')
+    middle_category_list = json.loads(middle_category_list)
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
     'Display-Api-Key': 'VWmkUPgs6g2fviPZ5JQFQ3pERP4tIXv/J2jppLqSRBk='

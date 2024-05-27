@@ -1,3 +1,4 @@
+from core.infra.database.models.review import ReviewProduct
 from sqlalchemy import create_engine, and_, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError

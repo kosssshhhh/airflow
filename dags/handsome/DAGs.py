@@ -56,7 +56,10 @@ with DAG(
     fetch_products = FetchProductListFromCategoryOperator(task_id='fetch.products')
     fetch_products_info = FetchProductOperator(task_id='fetch.products.info')
     fetch_products_reviews = FetchReviewOperator(task_id='fetch.products.reviews')
-    transform_images = TransformImageOperator(task_id="transform.images")
+    transform_images = TransformImageOperator(
+        task_id="transform.images",
+        site_name="handsome"
+    )
     """작업"""
     
 

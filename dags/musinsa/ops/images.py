@@ -29,9 +29,9 @@ class FetchImageOperator(BaseOperator):
         xcomData = task_instance.xcom_pull(task_ids="fetch.products", key="product_id_list")
         logger.info(f"xcomData : {xcomData}")
         
-        product_image_result = self._gather(xcomData)
-        context["task_instance"].xcom_push(key="product_image", value=product_image_result)
-        logger.info(f"product_count : {len(product_image_result)}")
+        product_image_urls = self._gather(xcomData)
+        context["task_instance"].xcom_push(key="product_image_urls", value=product_image_urls)
+        logger.info(f"product_count : {len(product_image_urls)}")
         
 
     
