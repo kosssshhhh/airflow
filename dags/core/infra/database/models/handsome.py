@@ -11,7 +11,6 @@ class HandsomeVariable(Base):
     product_info = Column(Text)
     fitting_info = Column(Text)
     additional_info = Column(Text)
-    brand = Column(String(255))
     __table_args__ = (
         ForeignKeyConstraint(
             ['product_id', 'mall_type'],

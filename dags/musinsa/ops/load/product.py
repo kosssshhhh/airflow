@@ -25,7 +25,6 @@ class LoadMusinsaProduct(BaseOperator):
         self.engine = create_engine(self.db_url, echo=True)
         self.SessionFactory = sessionmaker(bind=self.engine)
         self.mall_type = MallType.MUSINSA
-        Base.metadata.create_all(self.engine)
 
     def save_product(self, product_id_list):
         session = self.SessionFactory()

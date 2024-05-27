@@ -20,7 +20,6 @@ class LoadHandsomeReview(BaseOperator):
         self.db_url = f"mysql+pymysql://{conn.login}:{conn.password}@{conn.host}:{conn.port}/{conn.schema}"
         self.engine = create_engine(self.db_url, echo=True)
         self.SessionFactory = sessionmaker(bind=self.engine) 
-        Base.metadata.create_all(self.engine) 
 
     def save_review_product(self, product_review_list):
         session = self.SessionFactory()

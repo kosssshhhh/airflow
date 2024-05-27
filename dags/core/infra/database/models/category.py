@@ -28,6 +28,7 @@ class CategoryClosure(Base):
     mall_type = Column(Enum(MallType), primary_key=True)
     depth = Column(Integer)
 
+
 class CategoryProduct(Base):
     __tablename__ = "category_product"
     __table_args__ = {"extend_existing": True}

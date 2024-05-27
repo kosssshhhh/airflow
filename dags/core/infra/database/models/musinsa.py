@@ -23,7 +23,6 @@ class MusinsaVariable(Base):
     male_percentage = Column(Integer)
     female_percentage = Column(Integer)
     likes = Column(Integer)
-    brand = Column(String(255))
     cumulative_sales = Column(Integer)
     age_under_18 = Column(Integer, name="under_18")
     age_19_to_23 = Column(Integer, name="19_to_23")

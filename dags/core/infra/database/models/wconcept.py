@@ -10,7 +10,6 @@ class WConceptVariable(Base):
     mall_type = Column(Enum(MallType), ForeignKey('product.mall_type'))
     product_name = Column(String(255))
     likes = Column(Integer)
-    brand = Column(String(255))
     sold_out = Column(Boolean)
     __table_args__ = (
         ForeignKeyConstraint(
