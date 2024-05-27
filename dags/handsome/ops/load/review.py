@@ -1,3 +1,4 @@
+import traceback
 from core.infra.database.models.review import ReviewProduct
 from sqlalchemy import create_engine, and_, text
 from sqlalchemy.orm import sessionmaker
@@ -52,8 +53,16 @@ class LoadHandsomeReview(BaseOperator):
     def save_review(self, product_review_list):
         session = self.SessionFactory()
         try:
+            review_mapping = {
+                row.org_review_id: row.review_id
+                for row in session.query(ReviewProduct.org_review_id, ReviewProduct.review_id)
+                .filter(ReviewProduct.mall_type == 'HANDSOME').all()
+            }
+            
+            
             new_reviews = [
                 {
+                    'review_id': review_mapping[review['review_id']],
                     'product_id': review['product_id'],
                     'org_review_id': review['review_id'],
                     'rating': review['rating'],
@@ -72,8 +81,8 @@ class LoadHandsomeReview(BaseOperator):
             if new_reviews:
                 insert_ignore_sql = text("""
                     INSERT IGNORE INTO handsome_review 
-                    (product_id, org_review_id, rating, product_color, product_size, import_source, body, written_date, user_id, user_height, user_size)
-                    VALUES (:product_id, :org_review_id, :rating, :product_color, :product_size, :import_source, :body, :written_date, :user_id, :user_height, :user_size)
+                    (review_id, product_id, org_review_id, rating, product_color, product_size, import_source, body, written_date, user_id, user_height, user_size)
+                    VALUES (:review_id, :product_id, :org_review_id, :rating, :product_color, :product_size, :import_source, :body, :written_date, :user_id, :user_height, :user_size)
                 """)
                 session.execute(insert_ignore_sql, new_reviews)
                 session.commit()
@@ -83,6 +92,7 @@ class LoadHandsomeReview(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 

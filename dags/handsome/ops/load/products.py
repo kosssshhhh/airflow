@@ -5,7 +5,7 @@ from core.infra.database.models.product import Product
 from core.infra.database.models.category import CategoryProduct
 from core.infra.database.models.category import Category
 from datetime import date
-import json
+import json, traceback
 from core.infra.database.enum import MallType
 from core.infra.database.models.product import ProductRanking
 from core.infra.database.models.handsome import HandsomeVariable
@@ -76,6 +76,7 @@ class LoadHandsomeProduct(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 
@@ -120,6 +121,7 @@ class LoadHandsomeProduct(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
             
@@ -127,17 +129,21 @@ class LoadHandsomeProduct(BaseOperator):
         session = self.SessionFactory()
         product_ranking = []
         try:
-                        # category 테이블에서 org_category_id와 category_id 매핑을 가져옵니다.
+            # category 테이블에서 org_category_id와 category_id 매핑을 가져옵니다.
             category_mapping = {
                 row.org_category_id: row.category_id
                 for row in session.query(Category.org_category_id, Category.category_id)
-                .filter(Category.mall_type == self.mall_type).all()
+                .filter(Category.mall_type == 'HANDSOME').all()
             }
             
+            for org_category_id, category_id in category_mapping.items():
+                self.log.info(f"org_category_id: {org_category_id}, category_id: {category_id}")
+                
             for product in product_info_list:
+                self.log.info(f"org_category_id inside for: {product['smallCategory']}")
                 product_ranking.append({'product_id': product['product_id'],
                                         'mall_type': self.mall_type,
-                                        'category_id': category_mapping[product['smallCategory']],
+                                        'category_id': category_mapping[str(product['smallCategory'])],
                                         'fixed_price': product['fixed_price'],
                                         'rank_score': product['rank_score'],
                                         'brand': product['brand'],
@@ -153,6 +159,7 @@ class LoadHandsomeProduct(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:   
             session.close()
             
@@ -164,17 +171,17 @@ class LoadHandsomeProduct(BaseOperator):
             category_mapping = {
                 row.org_category_id: row.category_id
                 for row in session.query(Category.org_category_id, Category.category_id)
-                .filter(Category.mall_type == self.mall_type).all()
+                .filter(Category.mall_type == 'HANDSOME').all()
             }
 
             category_product = []
             for product in product_info_list:
-                org_category_id = product['smallCategory']
+                org_category_id = str(product['smallCategory'])
                 product_id = product['product_id']
 
                 # org_category_id가 매핑에 있는지 확인
                 if org_category_id in category_mapping:
-                    category_id = category_mapping[org_category_id]
+                    category_id = str(category_mapping[org_category_id])
                     category_product.append({
                         'product_id': product_id,
                         'mall_type': 'HANDSOME',
@@ -194,8 +201,7 @@ class LoadHandsomeProduct(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
-            self.log.debug(f"Executed SQL: {insert_ignore_sql}")
-            self.log.debug(f"Parameters: {category_product}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
         

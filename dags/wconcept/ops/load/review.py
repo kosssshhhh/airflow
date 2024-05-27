@@ -4,6 +4,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from datetime import datetime
 from datetime import date
 from core.infra.database.models.base import Base
+from core.infra.database.models.review import ReviewProduct
 from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from airflow.models.baseoperator import BaseOperator
@@ -48,8 +49,14 @@ class LoadWConceptReview(BaseOperator):
     def save_review(self, product_review_list):
         session = self.SessionFactory()
         try:
+            review_mapping = {
+                row.org_review_id: row.review_id
+                for row in session.query(ReviewProduct.org_review_id, ReviewProduct.review_id)
+                .filter(ReviewProduct.mall_type == 'WCONCEPT').all()
+            }
             new_reviews = [
                 {
+                    'review_id': review_mapping[review['review_id']],
                     'product_id': review['product_id'],
                     'org_review_id': review['review_id'],
                     'rate': review['rate'],
@@ -68,8 +75,8 @@ class LoadWConceptReview(BaseOperator):
             if new_reviews:
                 insert_ignore_sql = text("""
                     INSERT IGNORE INTO wconcept_review 
-                    (product_id, org_review_id, rate, size_info, purchase_option, size, material, user_id, written_date, body, likes)
-                    VALUES (:product_id, :org_review_id, :rate, :size_info, :purchase_option, :size, :material, :user_id, :written_date, :body, :likes)
+                    (review_id, product_id, org_review_id, rate, size_info, purchase_option, size, material, user_id, written_date, body, likes)
+                    VALUES (:review_id, :product_id, :org_review_id, :rate, :size_info, :purchase_option, :size, :material, :user_id, :written_date, :body, :likes)
                 """)
                 for review in new_reviews:
                     session.execute(insert_ignore_sql, review)
