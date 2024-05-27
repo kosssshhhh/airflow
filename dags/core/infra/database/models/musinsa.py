@@ -1,15 +1,4 @@
-from airflow.dags.core.infra.database.models.review import ReviewProduct
-from sqlalchemy import (
-    Enum,
-    Text,
-    Date,
-    Float,
-    Column,
-    ForeignKey,
-    Integer,
-    String,
-    ForeignKeyConstraint,
-)
+from sqlalchemy import Enum, Boolean, Text, Date, Float, Column, ForeignKey, Integer, String, ForeignKeyConstraint
 from sqlalchemy.orm import declarative_base
 from core.infra.database.enum import MallType
 from core.infra.database.models.base import Base
