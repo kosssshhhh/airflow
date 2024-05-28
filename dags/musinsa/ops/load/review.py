@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, and_, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 from datetime import date
-import json
+import json, traceback
 from core.infra.database.models.base import Base
 from core.infra.database.models.review import ReviewProduct
 from airflow.models.taskinstance import TaskInstance
@@ -41,6 +41,7 @@ class LoadMusinsaReview(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 
@@ -86,6 +87,7 @@ class LoadMusinsaReview(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 

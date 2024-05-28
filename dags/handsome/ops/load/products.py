@@ -47,6 +47,7 @@ class LoadHandsomeProduct(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 

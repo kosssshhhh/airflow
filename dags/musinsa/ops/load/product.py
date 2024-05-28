@@ -6,7 +6,7 @@ from core.infra.database.models.product import Product
 from core.infra.database.models.category import CategoryProduct
 from core.infra.database.models.category import Category
 from datetime import date
-import logging
+import logging, traceback
 from core.infra.database.enum import MallType
 from core.infra.database.models.product import ProductRanking
 from core.infra.database.models.musinsa import MusinsaVariable
@@ -49,6 +49,7 @@ class LoadMusinsaProduct(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
             
@@ -93,6 +94,7 @@ class LoadMusinsaProduct(BaseOperator):
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 
@@ -172,6 +174,7 @@ class LoadMusinsaProduct(BaseOperator):
             self.log.error(f"Error occurred: {e}")
             self.log.debug(f"Executed SQL: {insert_ignore_sql}")
             self.log.debug(f"Parameters: {category_product}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 
