@@ -1,4 +1,4 @@
-from sqlalchemy import Enum, Boolean, Text, Date, Float, Column, ForeignKey, Integer, String, ForeignKeyConstraint
+from sqlalchemy import Enum, Boolean, Text, Date, Float, Column, ForeignKey, Integer, String, ForeignKeyConstraint, UniqueConstraint
 from sqlalchemy.orm import declarative_base
 from core.infra.database.enum import MallType
 from core.infra.database.models.base import Base
@@ -14,16 +14,17 @@ class MusinsaVariable(Base):
     female_percentage = Column(Integer)
     likes = Column(Integer)
     cumulative_sales = Column(Integer)
-    age_under_18 = Column(Integer, name="under_18")
-    age_19_to_23 = Column(Integer, name="19_to_23")
-    age_24_to_28 = Column(Integer, name="24_to_28")
-    age_29_to_33 = Column(Integer, name="29_to_33")
-    age_34_to_39 = Column(Integer, name="34_to_39")
-    age_over_40 = Column(Integer, name="over_40")
+    age_under_18 = Column(Integer)
+    age_19_to_23 = Column(Integer)
+    age_24_to_28 = Column(Integer)
+    age_29_to_33 = Column(Integer)
+    age_34_to_39 = Column(Integer)
+    age_over_40 = Column(Integer)
     __table_args__ = (
         ForeignKeyConstraint(
             ["product_id", "mall_type"], ["product.product_id", "product.mall_type"]
         ),
+        UniqueConstraint('product_id', 'mall_type', name='_product_mall_uc'),
         {"extend_existing": True},
     )
 

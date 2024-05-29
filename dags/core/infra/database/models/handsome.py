@@ -1,4 +1,4 @@
-from sqlalchemy import Enum, Boolean, Text, Date, Float, Column, ForeignKey, Integer, String, ForeignKeyConstraint
+from sqlalchemy import Enum, Boolean, Text, Date, Float, Column, ForeignKey, Integer, String, ForeignKeyConstraint, UniqueConstraint
 from sqlalchemy.orm import declarative_base
 from core.infra.database.enum import MallType
 from core.infra.database.models.base import Base
@@ -16,6 +16,7 @@ class HandsomeVariable(Base):
             ['product_id', 'mall_type'],
             ['product.product_id', 'product.mall_type']
         ),
+        UniqueConstraint('product_id', 'mall_type', name='_product_mall_uc'),
         {'extend_existing': True}
     )
 

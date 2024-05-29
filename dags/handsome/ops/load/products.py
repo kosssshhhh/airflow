@@ -15,6 +15,7 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from airflow.models.baseoperator import BaseOperator
 from airflow.hooks.base import BaseHook
+from sqlalchemy.dialects.mysql import insert
 
 class LoadHandsomeProduct(BaseOperator):
     def __init__(self, *args, **kwargs):
@@ -54,33 +55,38 @@ class LoadHandsomeProduct(BaseOperator):
     def save_product_variable(self, product_info_list):
         session = self.SessionFactory()
         try:
-            existing_tuples = set(row[0] for row in session.query(HandsomeVariable.product_id).all())
-            
             new_variables = [
-                {'product_id': product_variable['product_id'],
-                 'mall_type': self.mall_type,
-                 'product_info': product_variable.get('product_info', ''),
-                 'fitting_info': product_variable.get('fitting_info',''), 
-                 'additional_info': json.dumps(product_variable.get('additional_info', []), ensure_ascii=False)[1:-1]}
+                {
+                    'product_id': product_variable['product_id'],
+                    'mall_type': self.mall_type,
+                    'product_info': product_variable.get('product_info', ''),
+                    'fitting_info': product_variable.get('fitting_info', ''),
+                    'additional_info': json.dumps(product_variable.get('additional_info', []), ensure_ascii=False)[1:-1]
+                }
                 for product_variable in product_info_list
-                if(product_variable['product_id']) not in existing_tuples
             ]
-            
-            
+
             if new_variables:
-                session.bulk_insert_mappings(HandsomeVariable, new_variables)
+                for new_variable in new_variables:
+                    insert_stmt = insert(HandsomeVariable).values(new_variable)
+                    update_stmt = insert_stmt.on_duplicate_key_update(
+                        product_info=insert_stmt.inserted.product_info,
+                        fitting_info=insert_stmt.inserted.fitting_info,
+                        additional_info=insert_stmt.inserted.additional_info
+                    )
+                    session.execute(update_stmt)
+
                 session.commit()
-                self.log.info(f"Inserted {len(new_variables)} new variables.")
+                self.log.info(f"Upserted {len(new_variables)} variables.")
             else:
                 self.log.info("No new variables were inserted")
-            
+
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
             self.log.error(traceback.format_exc())
         finally:
             session.close()
-
 
 
     def save_sku_attribute(self, product_list):

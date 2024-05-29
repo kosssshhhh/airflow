@@ -1,5 +1,5 @@
 from unicodedata import category
-from sqlalchemy import create_engine, and_, text
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 from core.infra.database.models.product import Product
@@ -16,6 +16,7 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from airflow.models.baseoperator import BaseOperator
 from airflow.hooks.base import BaseHook
+from sqlalchemy.dialects.mysql import insert
 
 logger = logging.getLogger(__name__)
 class LoadMusinsaProduct(BaseOperator):
@@ -58,39 +59,48 @@ class LoadMusinsaProduct(BaseOperator):
             return None
         return value.replace('%', '')
 
-# 각 age group의 값을 처리
+
     def save_product_variable(self, product_info_list):
         session = self.SessionFactory()
         try:
-            existing_tuples = set(row[0] for row in session.query(MusinsaVariable.product_id).all())
-
             new_variables = [
-                {'product_id': product_variable['product_id'],
-                 'mall_type': self.mall_type,
-                 'product_num': product_variable['product_num'],
-                 'male_percentage': product_variable['male_percentage'],
-                 'female_percentage': product_variable['female_percentage'],
-                 'likes': product_variable['like'],
-                 'cumulative_sales': product_variable['cumulative_sales'],
-                 'age_under_18' : self.replace_percentage(product_variable.get('under_18')),
-                 'age_19_to_23' : self.replace_percentage(product_variable.get('age_19_to_23')),
-                 'age_24_to_28' : self.replace_percentage(product_variable.get('age_24_to_28')),
-                 'age_29_to_33' : self.replace_percentage(product_variable.get('age_29_to_33')),
-                 'age_34_to_39' : self.replace_percentage(product_variable.get('age_34_to_39')),
-                 'age_over_40' : self.replace_percentage(product_variable.get('over_40'))
-                 }
+                {
+                    'product_id': product_variable['product_id'],
+                    'mall_type': self.mall_type,
+                    'product_num': product_variable['product_num'],
+                    'male_percentage': product_variable['male_percentage'],
+                    'female_percentage': product_variable['female_percentage'],
+                    'likes': product_variable['like'],
+                    'cumulative_sales': product_variable['cumulative_sales'],
+                    'age_under_18': self.replace_percentage(product_variable.get('under_18')),
+                    'age_19_to_23': self.replace_percentage(product_variable.get('age_19_to_23')),
+                    'age_24_to_28': self.replace_percentage(product_variable.get('age_24_to_28')),
+                    'age_29_to_33': self.replace_percentage(product_variable.get('age_29_to_33')),
+                    'age_34_to_39': self.replace_percentage(product_variable.get('age_34_to_39')),
+                    'age_over_40': self.replace_percentage(product_variable.get('over_40'))
+                }
                 for product_variable in product_info_list
-                if(product_variable['product_id']) not in existing_tuples
             ]
-            
-            
+
             if new_variables:
-                session.bulk_insert_mappings(MusinsaVariable, new_variables)
-                session.commit()
-                self.log.info(f"Inserted {len(new_variables)} new variables.")
-            else:
-                self.log.info("No new variables were inserted")
-            
+                insert_stmt = insert(MusinsaVariable).values(new_variables)
+                update_stmt = insert_stmt.on_duplicate_key_update(
+                    product_num=insert_stmt.inserted.product_num,
+                    male_percentage=insert_stmt.inserted.male_percentage,
+                    female_percentage=insert_stmt.inserted.female_percentage,
+                    likes=insert_stmt.inserted.likes,
+                    cumulative_sales=insert_stmt.inserted.cumulative_sales,
+                    age_under_18=insert_stmt.inserted.age_under_18,
+                    age_19_to_23=insert_stmt.inserted.age_19_to_23,
+                    age_24_to_28=insert_stmt.inserted.age_24_to_28,
+                    age_29_to_33=insert_stmt.inserted.age_29_to_33,
+                    age_34_to_39=insert_stmt.inserted.age_34_to_39,
+                    age_over_40=insert_stmt.inserted.age_over_40
+                )
+            session.execute(update_stmt)
+            session.commit()
+            self.log.info(f"Upserted {len(new_variables)} variables.")
+
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")

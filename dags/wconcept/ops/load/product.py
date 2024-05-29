@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 from core.infra.database.models.category import Category
 from datetime import date
-import logging
+import logging, traceback
 from core.infra.database.enum import MallType
 from core.infra.database.models.product import ProductRanking
 from core.infra.database.models.wconcept import WConceptVariable
@@ -12,6 +12,7 @@ from airflow.models.taskinstance import TaskInstance
 from airflow.utils.context import Context
 from airflow.models.baseoperator import BaseOperator
 from airflow.hooks.base import BaseHook
+from sqlalchemy.dialects.mysql import insert
 
 logger = logging.getLogger(__name__)
 class LoadWConceptProduct(BaseOperator):
@@ -53,30 +54,36 @@ class LoadWConceptProduct(BaseOperator):
     def save_product_variable(self, product_info_list):
         session = self.SessionFactory()
         try:
-            existing_tuples = set(row[0] for row in session.query(WConceptVariable.product_id).all())
-
             new_variables = [
-                {'product_id': product_variable['product_id'],
-                 'mall_type': self.mall_type,
-                 'product_name': product_variable['product_name'],
-                #  'brand': product_variable['brand'],
-                 'sold_out': True if product_variable['sold_out'] == '판매중' else False,
-                 'likes': product_variable['likes'],
-                 }
+                {
+                    'product_id': product_variable['product_id'],
+                    'mall_type': self.mall_type,
+                    'product_name': product_variable['product_name'],
+                    'sold_out': True if product_variable['sold_out'] == '판매중' else False,
+                    'likes': product_variable['likes'],
+                }
                 for product_variable in product_info_list
-                if(product_variable['product_id']) not in existing_tuples
             ]
-            
+
             if new_variables:
-                session.bulk_insert_mappings(WConceptVariable, new_variables)
+                for new_variable in new_variables:
+                    insert_stmt = insert(WConceptVariable).values(new_variable)
+                    update_stmt = insert_stmt.on_duplicate_key_update(
+                        product_name=insert_stmt.inserted.product_name,
+                        sold_out=insert_stmt.inserted.sold_out,
+                        likes=insert_stmt.inserted.likes
+                    )
+                    session.execute(update_stmt)
+
                 session.commit()
-                self.log.info(f"Inserted {len(new_variables)} new variables.")
+                self.log.info(f"Upserted {len(new_variables)} variables.")
             else:
                 self.log.info("No new variables were inserted")
-            
+
         except Exception as e:
             session.rollback()
             self.log.error(f"Error occurred: {e}")
+            self.log.error(traceback.format_exc())
         finally:
             session.close()
 
