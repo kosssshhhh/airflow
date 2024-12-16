@@ -1,0 +1,10 @@
+/logs
+
+# Ignore all .pyc files
+*.pyc
+
+dags/dev/*
+
+.env
+.idea
+conn_json.json

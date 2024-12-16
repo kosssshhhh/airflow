@@ -1,0 +1,28 @@
+FROM postgres:13
+
+# 필요한 패키지 설치
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    postgresql-server-dev-13 \
+    libmariadb-dev-compat \
+    libmariadb-dev
+
+# pgvector 설치
+RUN git clone https://github.com/pgvector/pgvector.git && \
+    cd pgvector && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf pgvector
+
+# mysql_fdw 설치
+RUN git clone https://github.com/EnterpriseDB/mysql_fdw.git
+
+# Build mysql_fdw with USE_PGXS=1
+WORKDIR /mysql_fdw
+RUN make USE_PGXS=1
+RUN make USE_PGXS=1 install
+
+# Clean up
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /mysql_fdw
