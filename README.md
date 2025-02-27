@@ -4,12 +4,17 @@
 
 `Apache Airflow`를 활용하여 스케쥴링 및 모니터링 할 수 있도록 관리.
 
+<br>
+<br>
+
 ## Extract, Transform
 
 `Python`, `BS4`, `HTTPX`를 활용하여 각 쇼핑몰 별로 크롤링 코드를 작성하였고, 이 과정에서 수집되는 데이터들을 원하는 형태로 변환하는 과정도 함께 진행.
 
 <img width="482" alt="crawled data visualizaion" src="https://github.com/user-attachments/assets/e95842db-212a-4c1e-a4b8-fed7e110ca4a" />
 
+
+<br>
 
 
 ## Dag
